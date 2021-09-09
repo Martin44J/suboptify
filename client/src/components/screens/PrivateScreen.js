@@ -31,6 +31,7 @@ const PrivateScreen = ({history}) => {
     localStorage.removeItem("authToken");
     history.push("/login");
   };
+  
   return error ? (
     <span className="error-message">{error}</span>
   ) : (
