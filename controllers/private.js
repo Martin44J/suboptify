@@ -21,8 +21,8 @@ exports.secondPrivateRoutePut = async(req,res,next) =>{
             return next( new ErrorResponse("User not found", 404));
         }
 
-        user.temp = req.body.temp;
-    
+        user.shows = [...user.shows,req.body.show];
+        
         await user.save();
         console.log(user);
 

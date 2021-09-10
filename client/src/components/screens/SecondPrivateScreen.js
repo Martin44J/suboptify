@@ -2,11 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./secondPrivateRoute.css";
 
+
 const SecondPrivateScreen = ({history}) => {
   const [error, setError] = useState("");
-  const [user, setUser] = useState({});
-  const [temp, setTemp] = useState("Anthony");
+  const [user, setUser] = useState({shows:["Loading shows"]});
+  const [show,changeShow] = useState("");
   const [data, setData] = useState("");
+
+  
 
   useEffect(() => {
     const fetchPrivateData = async () => {
@@ -32,7 +35,13 @@ const SecondPrivateScreen = ({history}) => {
     console.log(user);
   };
 
-  const tempHandler = async() =>{
+  const handleChange = (event) => {
+    const value = event.target.value;
+    console.log(value);
+    changeShow(value);
+  }
+
+  const showHandler = async() =>{
       try {
         const config = {
           headers: {
@@ -40,7 +49,7 @@ const SecondPrivateScreen = ({history}) => {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
           },
         };
-        const { data } = await axios.put("/api/private/secondPrivateRoutePut", {temp}, config);
+        const { data } = await axios.put("/api/private/secondPrivateRoutePut", {show}, config);
         setData(data.data);
         setUser(data.user);
       } catch (error) {
@@ -53,9 +62,9 @@ const SecondPrivateScreen = ({history}) => {
       //     temp: temp
       //   }
       // })
+      changeShow("");
     };
 
-  
 
   
   return error ? (
@@ -63,9 +72,21 @@ const SecondPrivateScreen = ({history}) => {
   ) : (
     <>
       {/* <div style={{background: "green", color: "white"}}>{user.username}</div> */}
-      <h3>{data}</h3>
-      <button onClick={printUser}>print user</button>
-      <button onClick={tempHandler}>set temp</button>
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-6">
+            <h1>Watchlist</h1>
+            <div className="input-group mb-3" id = "show-input">
+              <form onSubmit={e => e.preventDefault()}>
+                <input onChange={handleChange} className="form-control" type="text" name="postTitle" placeholder="Show/Movie Name" aria-label="Show/Movie Name" aria-describedby="button-addon1" value={show}/>
+                <button onClick={showHandler} className="btn btn-outline-primary" id="button-addon1" type="submit" name="button">Add</button>
+              </form>
+            </div>
+            {user.shows.map((show,index)=>{return <p key={index}>{show}</p>})}
+            <button onClick={printUser}>print user</button>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

@@ -12,7 +12,7 @@ exports.register = async (req,res,next)=>{
         const user = await User.create({
             username, email, password
         });
-
+        user.shows = [];
         sendToken(user, 201, res);
     } catch (error) {
         next(error);
