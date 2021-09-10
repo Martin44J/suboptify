@@ -7,13 +7,13 @@ exports.getPrivateData = (req,res,next) =>{
     res.status(200).json({success:"true", data: "You got access to the private data on this route"});
 }
 
-exports.secondPrivateRoute = (req,res,next) =>{
+exports.watchlist = (req,res,next) =>{
     const user = req.user;
     // console.log(user);
     res.status(200).json({sucess: "true", user: user});
 }
 
-exports.secondPrivateRoutePut = async(req,res,next) =>{
+exports.addToWatchlist = async(req,res,next) =>{
     try{
 
         user = req.user;

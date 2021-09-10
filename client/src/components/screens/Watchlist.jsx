@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./secondPrivateRoute.css";
+import "./Watchlist.css";
 
 
-const SecondPrivateScreen = ({history}) => {
+const Watchlist = ({history}) => {
   const [error, setError] = useState("");
   const [user, setUser] = useState({shows:["Loading shows"]});
   const [show,changeShow] = useState("");
@@ -21,7 +21,7 @@ const SecondPrivateScreen = ({history}) => {
       };
 
       try {
-        const { data } = await axios.get("/api/private/secondPrivateRoute", config);
+        const { data } = await axios.get("/api/private/watchlist", config);
         setUser(data.user);
       } catch (error) {
         setError("problem with server");
@@ -49,7 +49,7 @@ const SecondPrivateScreen = ({history}) => {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
           },
         };
-        const { data } = await axios.put("/api/private/secondPrivateRoutePut", {show}, config);
+        const { data } = await axios.put("/api/private/watchlistadd", {show}, config);
         setData(data.data);
         setUser(data.user);
       } catch (error) {
@@ -91,4 +91,4 @@ const SecondPrivateScreen = ({history}) => {
   );
 };
 
-export default SecondPrivateScreen;
+export default Watchlist;
