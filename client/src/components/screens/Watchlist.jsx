@@ -32,10 +32,6 @@ const Watchlist = ({history}) => {
     fetchPrivateData();
   }, []);
 
-  const printUser = () =>{
-    console.log(user);
-  };
-
   const handleChange = (event) => {
     const value = event.target.value;
     console.log(value);
@@ -84,15 +80,14 @@ const Watchlist = ({history}) => {
       <div className="container">
         <div className="row">
           <div className="col-sm-6">
-            <h1>Watchlist</h1>
-            <div className="input-group mb-3" id = "show-input">
               <form onSubmit={e => e.preventDefault()}>
-                <input onChange={handleChange} className="form-control" type="text" name="postTitle" placeholder="Show/Movie Name" aria-label="Show/Movie Name" aria-describedby="button-addon1" value={show}/>
-                <button onClick={addShow} className="btn btn-outline-primary" id="button-addon1" type="submit" name="button">Add</button>
+              <h1>Watchlist</h1>
+                <div className="input-group mb-3" id="watchlist-input">
+                  <input id="watchlist-input" onChange={handleChange} className="form-control" type="text" name="postTitle" placeholder="Show/Movie Name" aria-label="Show/Movie Name" aria-describedby="button-addon1" value={show}/>
+                  <button onClick={addShow} className="btn btn-outline-primary addButton" id="button-addon1" type="submit" name="button">Add</button>
+                </div>
               </form>
-            </div>
             {user.shows.map((show,index)=>{return <WatchlistItem key={index} id={index} show={show} removeShow={removeShow}/>})}
-            <button onClick={printUser}>print user</button>
           </div>
         </div>
       </div>
