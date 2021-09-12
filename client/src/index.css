@@ -4,12 +4,12 @@
     box-sizing: border-box;
   }
   
-  body {
+  /* body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.7;
     background: #eee;
     color: #333;
-  }
+  } */
   
   .form-group,
   .form-group label,
@@ -35,22 +35,22 @@
     border-bottom: 3px solid coral;
   }
   
-  .btn {
+  /* .btn {
     padding: 10px 20px;
     cursor: pointer;
     width: 100%;
     font-size: 1rem;
     border: none;
-  }
+  } */
   
   .btn:hover {
     opacity: 0.8;
   }
   
-  .btn-primary {
+  /* .btn-primary {
     background-color: coral;
     color: #fff;
-  }
+  } */
   
   .error-message {
     width: 100%;
