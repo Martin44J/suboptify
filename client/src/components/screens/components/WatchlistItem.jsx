@@ -1,7 +1,7 @@
 import React from "react";
 import LoadingRing from "./LoadingRing.jsx";
 
-function WatchlistItem(props) {
+const WatchlistItem=(props) => {
     if (props.show.title === "Loading watchlist") {
         return (
             <div>
