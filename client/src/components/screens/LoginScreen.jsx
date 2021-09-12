@@ -12,7 +12,7 @@ const LoginScreen = ({ history }) => {
   //avoids sending users to login page if they are already logged in.
   useEffect(() => {
     if (localStorage.getItem("authToken")) {
-      history.push("/");
+      history.push("/watchlist");
     }
   }, [history]);
 
