@@ -1,16 +1,17 @@
 import React from "react";
+import LoadingRing from "./LoadingRing.jsx";
 
 function WatchlistItem(props) {
     if (props.show.title === "Loading watchlist") {
         return (
             <div>
-                <div className="lds-ring bigWheel"><div></div><div></div><div></div><div></div></div>
+                <LoadingRing size="big"/>
             </div>
         )
     } else if (props.show.title === "Loading watchlist item"){
         return (
             <div>
-                <div className="lds-ring littleWheel"><div></div><div></div><div></div><div></div></div>
+                <LoadingRing size="little"/>
             </div>
         )
     } else {
