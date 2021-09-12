@@ -1,9 +1,9 @@
-#watchlist-input {
+#watchlist-screen__watchlist-input {
   width: 50%;
 }
 
-#button-addon1 {
-  width: 20%;
+#watchlist-screen__button-addon1 {
+  width: 60px;
 }
 
   
