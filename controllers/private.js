@@ -29,7 +29,7 @@ exports.addToWatchlist = async(req,res,next) =>{
         
         res.status(201).json({
             sucess: true,
-            data: "Temp has been set",
+            data: "Watchlist has been updated",
             user: user
         })
     }catch(error){
