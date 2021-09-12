@@ -82,9 +82,9 @@ const Watchlist = ({history}) => {
           <div className="col-sm-6">
               <form onSubmit={e => e.preventDefault()}>
               <h1>Watchlist</h1>
-                <div className="input-group mb-3" id="watchlist-input">
-                  <input id="watchlist-input" onChange={handleChange} className="form-control" type="text" name="postTitle" placeholder="Show/Movie Name" aria-label="Show/Movie Name" aria-describedby="button-addon1" value={show}/>
-                  <button onClick={addShow} className="btn btn-outline-primary addButton" id="button-addon1" type="submit" name="button">Add</button>
+                <div className="input-group mb-3" id="watchlist-screen__watchlist-input">
+                  <input id="watchlist-input" onChange={handleChange} className="form-control" type="text" name="postTitle" placeholder="Show/Movie Name" aria-label="Show/Movie Name" aria-describedby="watchlist-screen__button-addon1" value={show}/>
+                  <button onClick={addShow} className="btn btn-outline-primary" id="watchlist-screen__button-addon1" type="submit" name="button">Add</button>
                 </div>
               </form>
             {user.shows.map((show,index)=>{return <WatchlistItem key={index} id={index} show={show} removeShow={removeShow}/>})}
