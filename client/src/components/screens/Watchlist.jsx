@@ -43,6 +43,12 @@ const Watchlist = ({history}) => {
   }
 
   const addShow = async() =>{
+    setUser((prevValues) => {
+      return {
+        ...prevValues,
+        shows: [...prevValues.shows ,{title:"Loading watchlist item"}]
+      }
+    });
       try {
         const config = {
           headers: {

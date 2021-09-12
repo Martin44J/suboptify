@@ -4,7 +4,13 @@ function WatchlistItem(props) {
     if (props.show.title === "Loading watchlist") {
         return (
             <div>
-                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                <div className="lds-ring bigWheel"><div></div><div></div><div></div><div></div></div>
+            </div>
+        )
+    } else if (props.show.title === "Loading watchlist item"){
+        return (
+            <div>
+                <div className="lds-ring littleWheel"><div></div><div></div><div></div><div></div></div>
             </div>
         )
     } else {
