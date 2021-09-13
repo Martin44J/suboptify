@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import SuboptifyBackground from "./components/SuboptifyBackground.jsx";
 import "./LoginScreen.css";
 
 const LoginScreen = ({ history }) => {
@@ -45,6 +46,7 @@ const LoginScreen = ({ history }) => {
 
   return (
     <div className="login-screen">
+      <SuboptifyBackground />
       <form onSubmit={loginHandler} className="login-screen__form">
         <h3 className="login-screen__title">Login</h3>
         {error && <span className="error-message">{error}</span>}
@@ -63,9 +65,6 @@ const LoginScreen = ({ history }) => {
         <div className="form-group">
           <label htmlFor="password">
             Password:{" "}
-            <Link to="/forgotpassword" tabIndex={4} className="login-screen__forgotpassword">
-              Forgot Password?
-            </Link>
           </label>
           <input
             type="password"
@@ -78,13 +77,18 @@ const LoginScreen = ({ history }) => {
             tabIndex={2}
           />
         </div>
-        <button type="submit" className="btn btn-primary" tabIndex={3}>
+        <button type="submit" className="btn btn-outline-primary" tabIndex={3}>
           Login
         </button>
 
         <span className="login-screen__subtext">
           Don't have an account? <Link to="/register">Register</Link>
+          <br/>
+          <Link to="/forgotpassword" tabIndex={4} className="login-screen__forgotpassword">
+              Forgot Password?
+          </Link>
         </span>
+        
       </form>
     </div>
   );

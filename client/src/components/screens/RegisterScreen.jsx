@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./RegisterScreen.css";
+import SuboptifyBackground from "./components/SuboptifyBackground.jsx";
+
 
 const RegisterScreen = ({ history }) => {
   const [username, setUsername] = useState("");
@@ -52,6 +54,7 @@ const RegisterScreen = ({ history }) => {
 
   return (
     <div className="register-screen">
+      <SuboptifyBackground/>
       <form onSubmit={registerHandler} className="register-screen__form">
         <h3 className="register-screen__title">Register</h3>
         {error && <span className="error-message">{error}</span>}
@@ -101,7 +104,7 @@ const RegisterScreen = ({ history }) => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-outline-primary">
           Register
         </button>
 

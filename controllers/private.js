@@ -3,7 +3,6 @@ const ErrorResponse = require("../utils/errorResponse");
 const axios = require("axios");
 
 exports.getPrivateData = (req,res,next) =>{
-    // console.log(req.user);
     res.status(200).json({success:"true", data: "You got access to the private data on this route"});
 }
 
@@ -13,7 +12,6 @@ exports.watchlist = (req,res,next) =>{
         if(!user){
             return next( new ErrorResponse("User not found", 404));
         }
-        // console.log(user);
         res.status(200).json({sucess: "true", user: user});
     } catch(error) {
         next(error);
@@ -26,10 +24,8 @@ exports.removeFromWatchlist = async(req,res,next) =>{
         if(!user){
             return next( new ErrorResponse("User not found", 404));
         }
-        console.log(req.body.id);
         user.shows.splice(req.body.id,1);
         await user.save();
-        console.log(user);
         
         res.status(201).json({
             sucess: true,
@@ -88,7 +84,6 @@ exports.addToWatchlist = async(req,res,next) =>{
         user.shows = [...user.shows,show];
         
         await user.save();
-        console.log(user);
 
         
         res.status(201).json({

@@ -53,7 +53,6 @@ exports.forgotPassword = async (req,res,next)=>{
         const user = await User.findOne({email});
 
         if(!user){
-            console.log("here1");
             return next(new ErrorResponse("Email could not be sent", 404));
         }else{
 
@@ -88,7 +87,7 @@ exports.forgotPassword = async (req,res,next)=>{
 
         } catch (err) {
             //catch errors, need to set these undefined to avoid issues.
-            console.log(err);
+            // console.log(err);
             user.resetPasswordToken = undefined;
             user.resetPasswordExpire = undefined;
 

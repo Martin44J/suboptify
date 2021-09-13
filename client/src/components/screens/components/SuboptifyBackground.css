@@ -1,0 +1,13 @@
+.background-text{
+  position:absolute;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 120%;
+  height: 100%;
+  transform: rotate(-45deg);
+  left: -500px;
+  top: -500px;
+  opacity: .5;
+
+}
