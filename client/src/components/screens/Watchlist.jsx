@@ -3,13 +3,12 @@ import axios from "axios";
 import WatchlistItem from "./components/WatchlistItem.jsx";
 import "./Watchlist.css";
 
-
 const Watchlist = ({history}) => {
   const [error, setError] = useState("");
   const [user, setUser] = useState({shows:[{title:"Loading watchlist"}]});
-  const [show,changeShow] = useState("");
+  const [showInput,changeShow] = useState("");
   const [data, setData] = useState("");
-
+  const [addingError, setAddingError] = useState("");
   
 
   useEffect(() => {
@@ -32,6 +31,11 @@ const Watchlist = ({history}) => {
     fetchPrivateData();
   }, []);
 
+  const logoutHandler = () =>{
+    localStorage.removeItem("authToken");
+    history.push("/");
+  };
+
   const handleChange = (event) => {
     const value = event.target.value;
     console.log(value);
@@ -39,12 +43,17 @@ const Watchlist = ({history}) => {
   }
 
   const addShow = async() =>{
-    setUser((prevValues) => {
-      return {
-        ...prevValues,
-        shows: [...prevValues.shows ,{title:"Loading watchlist item"}]
-      }
-    });
+    if (showInput==="") {
+      setAddingError("Enter a show or movie");
+    } else {
+      let showQuery = showInput.replaceAll(" ", "%20");
+      setAddingError("");
+      setUser((prevValues) => {
+        return {
+          ...prevValues,
+          shows: [...prevValues.shows, { title: "Loading watchlist item" }]
+        };
+      });
       try {
         const config = {
           headers: {
@@ -52,25 +61,27 @@ const Watchlist = ({history}) => {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
           },
         };
-        const { data } = await axios.put("/api/private/watchlistadd", {show}, config);
+        const { data } = await axios.put("/api/private/watchlistadd", {showQuery}, config);
         setData(data.data);
         setUser(data.user);
       } catch (error) {
-        setError("could not set temp");
-        console.log(error);
+        setAddingError(error.response.data.error);
+        console.log("here");
+        setUser((prevValues) => {
+          return {
+            ...prevValues,
+            shows: [...user.shows]
+          };
+        });
       }
-      // setUser((prevValue) {
-      //   return {
-      //     prevValue,
-      //     temp: temp
-      //   }
-      // })
-      changeShow("");
-    };
-
-    const removeShow = async(id) => {
-      console.log(id+"martin needs to teach me how to do this bullshit");
     }
+
+    changeShow("");
+  };
+
+  const removeShow = async(id) => {
+    console.log(id+"martin needs to teach me how to do this bullshit");
+  }
   
   return error ? (
     <span className="error-message">{error}</span>
@@ -81,15 +92,17 @@ const Watchlist = ({history}) => {
         <div className="row">
           <div className="col-sm-6">
               <form onSubmit={e => e.preventDefault()}>
-              <h1>Watchlist</h1>
+                <h1>Watchlist</h1>
                 <div className="input-group mb-3" id="watchlist-screen__watchlist-input">
-                  <input id="watchlist-input" onChange={handleChange} className="form-control" type="text" name="postTitle" placeholder="Show/Movie Name" aria-label="Show/Movie Name" aria-describedby="watchlist-screen__button-addon1" value={show}/>
+                  <input id="watchlist-input" onChange={handleChange} className="form-control" type="text" name="postTitle" placeholder="Show/Movie Name" aria-label="Show/Movie Name" aria-describedby="watchlist-screen__button-addon1" value={showInput}/>
                   <button onClick={addShow} className="btn btn-outline-primary" id="watchlist-screen__button-addon1" type="submit" name="button">Add</button>
                 </div>
+                <p className="watchlist-screen__errorDisplay">{addingError}</p>
               </form>
             {user.shows.map((show,index)=>{return <WatchlistItem key={index} id={index} show={show} removeShow={removeShow}/>})}
           </div>
         </div>
+        <button onClick={logoutHandler}>Logout</button>
       </div>
     </>
   );

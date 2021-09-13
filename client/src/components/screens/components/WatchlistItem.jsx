@@ -35,7 +35,7 @@ const WatchlistItem=(props) => {
                         </svg>      
                     </a>
 
-                    {" "+props.show}
+                    {" "+props.show.title}
                 </h5>
                 {/*List of services */}
                 {/* <ul>
