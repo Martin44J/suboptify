@@ -8,10 +8,38 @@ exports.getPrivateData = (req,res,next) =>{
 }
 
 exports.watchlist = (req,res,next) =>{
-    const user = req.user;
-    // console.log(user);
-    res.status(200).json({sucess: "true", user: user});
+    try {
+        const user = req.user;
+        if(!user){
+            return next( new ErrorResponse("User not found", 404));
+        }
+        // console.log(user);
+        res.status(200).json({sucess: "true", user: user});
+    } catch(error) {
+        next(error);
+    }
 }
+
+exports.removeFromWatchlist = async(req,res,next) =>{
+    try {
+        user = req.user;
+        if(!user){
+            return next( new ErrorResponse("User not found", 404));
+        }
+        console.log(req.body.id);
+        user.shows.splice(req.body.id,1);
+        await user.save();
+        console.log(user);
+        
+        res.status(201).json({
+            sucess: true,
+            data: "Watchlist has been updated",
+            user: user
+        });
+    } catch(error) {
+        next(error);
+    }
+}   
 
 exports.addToWatchlist = async(req,res,next) =>{
     try{

@@ -24,7 +24,7 @@ const Watchlist = ({history}) => {
         const { data } = await axios.get("/api/private/watchlist", config);
         setUser(data.user);
       } catch (error) {
-        setError("problem with server");
+        setError(error.response.data.error);
       }
     };
 
@@ -85,7 +85,19 @@ const Watchlist = ({history}) => {
   };
 
   const removeShow = async(id) => {
-    console.log(id+"martin needs to teach me how to do this bullshit");
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      };
+      const { data } = await axios.put("/api/private/watchlistremove",{id},config);
+      setData(data.data);
+      setUser(data.user);
+    } catch (error) {
+      setError(error.response.data.error);
+    }
   }
   
   return error ? (
