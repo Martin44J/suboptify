@@ -52,7 +52,11 @@ exports.addToWatchlist = async(req,res,next) =>{
                     show.title = response.data.name;
                 }
         });
-
+        user.shows.map((userShow)=>{
+            if (userShow.title === show.title) {
+                return next( new ErrorResponse("\'"+show.title + "\' is already in your watchlist", 404));
+            }
+        })
         user.shows = [...user.shows,show];
         
         await user.save();

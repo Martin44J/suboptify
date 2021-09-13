@@ -45,9 +45,11 @@ const Watchlist = ({history}) => {
   const addShow = async() =>{
     if (showInput==="") {
       setAddingError("Enter a show or movie");
+      setTimeout(() => {
+        setAddingError("");
+      }, 3000);
     } else {
       let showQuery = showInput.replaceAll(" ", "%20");
-      setAddingError("");
       setUser((prevValues) => {
         return {
           ...prevValues,
@@ -73,6 +75,9 @@ const Watchlist = ({history}) => {
             shows: [...user.shows]
           };
         });
+        setTimeout(() => {
+          setAddingError("");
+        }, 3000);
       }
     }
 

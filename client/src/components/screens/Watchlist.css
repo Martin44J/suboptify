@@ -1,6 +1,6 @@
 #watchlist-screen__watchlist-input {
   width: 50%;
-  padding-bottom:20px;
+  padding-bottom:15px;
 }
 
 #watchlist-screen__button-addon1 {
@@ -8,8 +8,8 @@
 }
 
 .watchlist-screen__errorDisplay {
-  position: fixed;
-  margin-top: -35px;
+  position: absolute;
+  margin-top: -30px;
   color: red;
 }
 
