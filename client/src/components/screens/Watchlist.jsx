@@ -119,7 +119,12 @@ const Watchlist = ({history}) => {
             {user.shows.map((show,index)=>{return <WatchlistItem key={index} id={index} show={show} removeShow={removeShow}/>})}
           </div>
         </div>
-        <button onClick={logoutHandler}>Logout</button>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <button className="btn btn-primary" onClick={logoutHandler}>Logout</button>
       </div>
     </>
   );
