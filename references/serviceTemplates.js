@@ -10,6 +10,7 @@ exports.getServiceTemplate = (serviceName) =>{
 }
 
 exports.serviceSupported = (serviceName) => {
+    //checking if service is in service templates
     if (typeof serviceTemplates[serviceName] === 'object') {
         console.log("here" + serviceTemplates[serviceName]);
         return true;

@@ -51,6 +51,7 @@ exports.addToWatchlist = async(req,res,next) =>{
         let mediaType = "";
         const showQuery = req.body.showQuery;
         let url = "https://api.themoviedb.org/3/search/multi?api_key=35be80a71bda97d96bfd9af67a1af4cd&language=en-US&query="+showQuery+"&page=1&include_adult=false";
+        //getting the show id
         await axios.get(url)
             .then(response => {
                 showId = response.data.results[0].id;
@@ -59,6 +60,7 @@ exports.addToWatchlist = async(req,res,next) =>{
             .catch(error => {
                 return next( new ErrorResponse("Could not find this show or movie", 404));
             });
+        //checking if a show was found
         if (!(showId===0)) {
             if (mediaType == 'movie') {
                 url = "https://api.themoviedb.org/3/movie/"+showId+"?api_key=35be80a71bda97d96bfd9af67a1af4cd&language=en-US&append_to_response=watch%2Fproviders";
@@ -69,6 +71,7 @@ exports.addToWatchlist = async(req,res,next) =>{
                 title: "",
                 services:[]
             }
+            //getting show details and services
             await axios.get(url)
                 .then(response => {
                     if (mediaType == 'movie') {
@@ -77,6 +80,7 @@ exports.addToWatchlist = async(req,res,next) =>{
                         show.title = response.data.name;
                     }
                     let servicesArray = [];
+                    //making an array of all the services for the given show
                     if (response.data['watch/providers'].results.US == null) {
                         const networks = response.data.networks;
                         if (networks != null) {
@@ -116,6 +120,7 @@ exports.addToWatchlist = async(req,res,next) =>{
                             });
                         }
                     }
+                    //This adds to the user only if we have catalogued a service, adds a formal name and a display name
                     servicesArray.map((service)=>{
                         let formalName = service.toLowerCase();
                         while (formalName.includes(" ")) {
