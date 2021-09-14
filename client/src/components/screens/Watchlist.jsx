@@ -92,6 +92,15 @@ const Watchlist = ({history}) => {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
       };
+      const showsAfterRemoval = [...user.shows];
+      showsAfterRemoval.splice(id,1);
+      setUser((prevValues) => {
+        return {
+          ...prevValues,
+          shows: [...showsAfterRemoval]
+        };
+      });
+      console.log(user.shows);
       const { data } = await axios.put("/api/private/watchlistremove",{id},config);
       // setData(data.data);
       setUser(data.user);
