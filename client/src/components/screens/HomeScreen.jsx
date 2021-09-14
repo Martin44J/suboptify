@@ -12,6 +12,7 @@ const HomeScreen = ({history}) => {
         }
       }, [history]);
 
+      document.body.style.overflow = "scroll";
     return(
         
         <div className="home-screen__root">

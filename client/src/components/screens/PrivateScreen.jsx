@@ -5,6 +5,8 @@ import "./PrivateScreen.css";
 const PrivateScreen = ({history}) => {
   const [error, setError] = useState("");
   const [privateData, setPrivateData] = useState("");
+  document.body.style.overflow = "scroll";
+
 
   useEffect(() => {
     const fetchPrivateDate = async () => {

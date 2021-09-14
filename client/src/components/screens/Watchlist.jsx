@@ -9,6 +9,8 @@ const Watchlist = ({history}) => {
   const [showInput,changeShow] = useState("");
   // const [data, setData] = useState("");
   const [addingError, setAddingError] = useState("");
+  document.body.style.overflow = "scroll";
+
   
 
   useEffect(() => {

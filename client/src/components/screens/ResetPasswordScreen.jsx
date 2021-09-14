@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import SuboptifyBackground from "./components/SuboptifyBackground.jsx";
 import "./ResetPasswordScreen.css";
 
 const ResetPasswordScreen = ({ history, match }) => {
@@ -9,6 +9,7 @@ const ResetPasswordScreen = ({ history, match }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  
 
   const resetPasswordHandler = async (e) => {
     e.preventDefault();
@@ -48,6 +49,7 @@ const ResetPasswordScreen = ({ history, match }) => {
 
   return (
     <div className="resetpassword-screen">
+      <SuboptifyBackground/>
       <form
         onSubmit={resetPasswordHandler}
         className="resetpassword-screen__form"

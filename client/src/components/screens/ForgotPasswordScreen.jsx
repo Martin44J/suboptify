@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import "./ForgotPasswordScreen.css";
+import SuboptifyBackground from "./components/SuboptifyBackground.jsx";
+
 
 const ForgotPasswordScreen = () => {
   const [email, setEmail] = useState("");
@@ -35,6 +37,7 @@ const ForgotPasswordScreen = () => {
 
   return (
     <div className="forgotpassword-screen">
+      <SuboptifyBackground/>
       <form
         onSubmit={forgotPasswordHandler}
         className="forgotpassword-screen__form"
@@ -57,7 +60,7 @@ const ForgotPasswordScreen = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-outline-primary">
           Send Email
         </button>
       </form>
