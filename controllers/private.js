@@ -1,7 +1,6 @@
 const User = require("../models/User");
 const ErrorResponse = require("../utils/errorResponse");
 const axios = require("axios");
-const {serviceSupported} = require("../references/serviceTemplates.js");
 
 exports.getPrivateData = (req,res,next) =>{
     res.status(200).json({success:"true", data: "You got access to the private data on this route"});
@@ -133,7 +132,7 @@ exports.addToWatchlist = async(req,res,next) =>{
                             displayName: service,
                             name: formalName
                         }
-                        if (serviceSupported(formalName) === true) {
+                        if (typeof user.preferences[formalName] === 'object') {
                             show.services.push(newService);
                         }
                         // show.services.push()
