@@ -7,7 +7,7 @@ const Watchlist = ({history}) => {
   const [error, setError] = useState("");
   const [user, setUser] = useState({shows:[{title:"Loading watchlist"}]});
   const [showInput,changeShow] = useState("");
-  const [data, setData] = useState("");
+  // const [data, setData] = useState("");
   const [addingError, setAddingError] = useState("");
   
 
@@ -64,7 +64,7 @@ const Watchlist = ({history}) => {
           },
         };
         const { data } = await axios.put("/api/private/watchlistadd", {showQuery}, config);
-        setData(data.data);
+        // setData(data.data);
         setUser(data.user);
       } catch (error) {
         setAddingError(error.response.data.error);
@@ -93,7 +93,7 @@ const Watchlist = ({history}) => {
         },
       };
       const { data } = await axios.put("/api/private/watchlistremove",{id},config);
-      setData(data.data);
+      // setData(data.data);
       setUser(data.user);
     } catch (error) {
       setError(error.response.data.error);
