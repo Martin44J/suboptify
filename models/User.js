@@ -2,6 +2,7 @@ const crypto = require("crypto");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { isBoolean } = require("util");
 
 //Broad coarse user schema that is used across the entire app.
 const UserSchema = new mongoose.Schema({
@@ -23,7 +24,22 @@ const UserSchema = new mongoose.Schema({
     }, 
     resetPasswordToken: String,
     resetPasswordExpire: Date,
-    shows: Array
+    shows: Array,
+    preferences: {
+        netflix: {
+            name: String
+        },
+        hulu: {
+            noAds: Boolean,
+            payYearly: Boolean
+        },
+        hbomax: {
+            name:String
+        },
+        disneyplus: {
+            payYearly: Boolean
+        }
+    }
 });
 
 

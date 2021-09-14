@@ -7,7 +7,7 @@ const PreLoginNavbar = () =>{
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark">
                 <div className="container" id="navbar-container">
-                    <div class="navbar-header">
+                    <div className="navbar-header">
                         <a className = "nav-link PreLoginNavbar__nav-link active" id="navbar-brand-link" href = "/">
                         <p className="PreLoginNavbar__navbar-brand">suboptify</p>
                         </a>
