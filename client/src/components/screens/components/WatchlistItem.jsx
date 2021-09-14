@@ -23,12 +23,12 @@ const WatchlistItem=(props) => {
                     <XSquare onClick={()=>{props.removeShow(props.id)}}/>
                     {" "+props.show.title}
                 </h5>
-                {/*List of services */}
-                {/* <ul>
+                
+                <ul>
                     {props.show.services.map((service)=>{
-                        <li>{service}</li>
+                        return <li>{service.displayName}</li>
                     })}
-                </ul> */}
+                </ul>
             </div>
         );
             }
