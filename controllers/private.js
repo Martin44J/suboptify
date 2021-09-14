@@ -171,17 +171,6 @@ exports.addToWatchlist = async(req,res,next) =>{
                 }
             }
         };
-
-        user.shows = [...user.shows,show];
-        
-        await user.save();
-
-        
-        res.status(201).json({
-            sucess: true,
-            data: "Watchlist has been updated",
-            user: user
-        })
     }catch(error){
         next(error);
     }
