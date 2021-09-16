@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 // import axios from "axios";
 import { Link } from "react-router-dom";
 import PreLoginNavbar from "./components/PreLoginNavbar";
+import ReactGa from "react-ga";
 import "./HomeScreen.css";
 
 const HomeScreen = ({history}) => {
@@ -10,7 +11,10 @@ const HomeScreen = ({history}) => {
         if (localStorage.getItem("authToken")) {
           history.push("/watchlist");
         }
+
       }, [history]);
+
+
 
       document.body.style.overflow = "scroll";
     return(

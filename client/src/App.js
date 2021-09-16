@@ -1,4 +1,5 @@
 import {BrowserRouter as Router, Switch, Route}from "react-router-dom";
+import React from "react";
 
 //routing
 import PrivateRoute from "./components/routing/PrivateRoute";
@@ -14,6 +15,8 @@ import HomeScreen from "./components/screens/HomeScreen";
 
 
 const App = () => {
+  
+
   return (
   <Router>
     <div className= "App">
