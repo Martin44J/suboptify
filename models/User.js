@@ -27,16 +27,26 @@ const UserSchema = new mongoose.Schema({
     shows: Array,
     preferences: {
         netflix: {
-            name: String
+            price: Number,
+            numDownloads: Number,
+            numConcurrent: Number,
+            HDRequired: Boolean,
+            ultraHDRequired: Boolean
         },
         hulu: {
-            noAds: Boolean,
-            payYearly: Boolean
+            price: Number,
+            noAds: Boolean
         },
         hbomax: {
-            name:String
+            price: Number,
+            payYearly: Boolean,
+            downloadsRequired: Boolean,
+            warnerBrosMoviePremieres: Boolean,
+            ultraHDRequired: Boolean,
+            noAds: Boolean
         },
         disneyplus: {
+            price: Number,
             payYearly: Boolean
         }
     }
