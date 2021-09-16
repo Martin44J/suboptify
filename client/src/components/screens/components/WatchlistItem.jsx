@@ -32,7 +32,7 @@ const WatchlistItem=(props) => {
                 </ul>
             </div>
         );
-            }
+    }
 }
 
 export default WatchlistItem;
