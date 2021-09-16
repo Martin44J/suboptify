@@ -1,5 +1,24 @@
 .x-icon {
-    padding-right: 5px;
-    display: inline;
-    color: red;
+    /* display:none; */
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    /* color: #f5ba13; */
+    border: none;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    outline: none;
 }
+
+.watchlist-item{
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px #ccc;
+    padding: 10px;
+    width: 240px;
+    margin: 16px;
+    /* float: left; */
+    display: inline-block;
+}
+

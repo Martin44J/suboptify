@@ -1,16 +1,53 @@
-#watchlist-screen__watchlist-input {
+/* #watchlist-screen__watchlist-input {
   width: 50%;
   padding-bottom:15px;
 }
 
 #watchlist-screen__button-addon1 {
   width: 60px;
-}
+} */
 
 .watchlist-screen__errorDisplay {
-  position: absolute;
-  margin-top: -30px;
   color: red;
 }
 
+
+form.media-input input{
+  width: 100%;
+  border: none;
+  padding: 4px;
+  outline: none;
+  font-size: 1.2em;
+  font-family: inherit;
+  resize: none;
+}
+
+form.media-input button {
+  position: absolute;
+  right: 18px;
+  bottom: -18px;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  background-color: #ba9bc4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  outline: none;
+}
+
+#input-area{
+  position: relative;
+  width: 480px;
+  margin: 30px auto 20px auto;
+  background: #fff;
+  padding: 15px;
+  border-radius: 7px;
+  box-shadow: 0 1px 5px rgb(138, 137, 137);
+}
+
+/* .watchlist-container{
+  padding-right: 315px !important;
+} */
   

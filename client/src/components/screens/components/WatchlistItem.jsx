@@ -1,6 +1,6 @@
 import React from "react";
 import LoadingRing from "./LoadingRing.jsx";
-import { XSquare } from 'react-bootstrap-icons';
+import { XLg } from 'react-bootstrap-icons';
 import "./WatchlistItem.css";
 
 const WatchlistItem=(props) => {
@@ -18,10 +18,10 @@ const WatchlistItem=(props) => {
         )
     } else {
         return (
-            <div>
+            <div className="watchlist-item">
                 {/*Remove Show Button*/}
                 <h5>
-                    <XSquare className="x-icon" onClick={()=>{props.removeShow(props.id)}}/>
+                    <XLg className="x-icon" onClick={()=>{props.removeShow(props.id)}}/>
                     {" "+props.show.title}
                 </h5>
                 

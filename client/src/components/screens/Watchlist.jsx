@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import WatchlistItem from "./components/WatchlistItem.jsx";
+import { PlusLg } from 'react-bootstrap-icons';
+import PostLoginNavbar from "./components/PostLoginNavbar.jsx";
 import "./Watchlist.css";
 
 const Watchlist = ({history}) => {
@@ -110,35 +112,77 @@ const Watchlist = ({history}) => {
       setError(error.response.data.error);
     }
   }
+
+
+
   
-  return error ? (
+  
+  // return error ? (
+  //   <span className="error-message">{error}</span>
+  // ) : (
+  //   <>
+  //     {/* <div style={{background: "green", color: "white"}}>{user.username}</div> */}
+  //     <div className="container">
+  //       <div className="row">
+  //         <div className="col-sm-6">
+              // <form onSubmit={e => e.preventDefault()}>
+              //   <h1>Watchlist</h1>
+              //   <div className="input-group mb-3" id="watchlist-screen__watchlist-input">
+              //     <input id="watchlist-input" onChange={handleChange} className="form-control" type="text" name="postTitle" placeholder="Show/Movie Name" aria-label="Show/Movie Name" aria-describedby="watchlist-screen__button-addon1" value={showInput}/>
+              //     <button onClick={addShow} className="btn btn-outline-primary" id="watchlist-screen__button-addon1" type="submit" name="button">Add</button>
+              //   </div>
+              //   <p className="watchlist-screen__errorDisplay">{addingError}</p>
+              // </form>
+  //           {user.shows.map((show,index)=>{return <WatchlistItem key={index} id={index} show={show} removeShow={removeShow}/>})}
+  //         </div>
+  //       </div>
+  //       <br />
+  //       <br />
+  //       <br />
+  //       <br />
+  //       <br />
+  //       <button className="btn btn-primary" onClick={logoutHandler}>Logout</button>
+  //     </div>
+  //   </>
+  // );
+
+  return error? (
     <span className="error-message">{error}</span>
-  ) : (
-    <>
-      {/* <div style={{background: "green", color: "white"}}>{user.username}</div> */}
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-6">
-              <form onSubmit={e => e.preventDefault()}>
-                <h1>Watchlist</h1>
-                <div className="input-group mb-3" id="watchlist-screen__watchlist-input">
-                  <input id="watchlist-input" onChange={handleChange} className="form-control" type="text" name="postTitle" placeholder="Show/Movie Name" aria-label="Show/Movie Name" aria-describedby="watchlist-screen__button-addon1" value={showInput}/>
-                  <button onClick={addShow} className="btn btn-outline-primary" id="watchlist-screen__button-addon1" type="submit" name="button">Add</button>
-                </div>
-                <p className="watchlist-screen__errorDisplay">{addingError}</p>
-              </form>
-            {user.shows.map((show,index)=>{return <WatchlistItem key={index} id={index} show={show} removeShow={removeShow}/>})}
+    ): (
+      <>
+      <div>
+        <PostLoginNavbar/>
+        <div className="container watchlist-container">
+          <div className="row">
+            <div className="col-lg-8">
+              {/* InputForm */}
+              <div id="input-area">
+                <form className="media-input" onSubmit={e => e.preventDefault()}>
+                    <input id="watchlist-input" onChange={handleChange} className="form-control" type="text" name="postTitle" placeholder="Show/Movie Name" aria-label="Show/Movie Name" aria-describedby="watchlist-screen__button-addon1" value={showInput}/>
+                    <button onClick={addShow} id="watchlist-screen__button-addon1" type="submit" name="button"><PlusLg/></button>
+                </form>
+                {addingError && <p className="watchlist-screen__errorDisplay">{addingError}</p>}
+              </div>
+
+              {/* Mapping Shows to a watchlist Item */}
+              {user.shows.map((show,index)=>{return (
+                <WatchlistItem 
+                key={index} 
+                id={index} 
+                show={show} 
+                removeShow={removeShow}/>
+              )
+              })}
+            </div>
+            <div className="col-lg-4">
+            <h3>Best Pricing Plan:</h3>
+            </div>
           </div>
         </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <button className="btn btn-primary" onClick={logoutHandler}>Logout</button>
       </div>
-    </>
-  );
+      </>
+    );
+
 };
 
 export default Watchlist;
