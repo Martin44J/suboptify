@@ -28,3 +28,9 @@
     position:absolute;
     display: inline-block;
 }
+
+.watchlist-service-image{
+    width: 30px;
+    height:30px;
+    padding: 3px;
+}
