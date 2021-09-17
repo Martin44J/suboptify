@@ -115,42 +115,11 @@ const Watchlist = ({history}) => {
 
 
 
-  
-  
-  // return error ? (
-  //   <span className="error-message">{error}</span>
-  // ) : (
-  //   <>
-  //     {/* <div style={{background: "green", color: "white"}}>{user.username}</div> */}
-  //     <div className="container">
-  //       <div className="row">
-  //         <div className="col-sm-6">
-              // <form onSubmit={e => e.preventDefault()}>
-              //   <h1>Watchlist</h1>
-              //   <div className="input-group mb-3" id="watchlist-screen__watchlist-input">
-              //     <input id="watchlist-input" onChange={handleChange} className="form-control" type="text" name="postTitle" placeholder="Show/Movie Name" aria-label="Show/Movie Name" aria-describedby="watchlist-screen__button-addon1" value={showInput}/>
-              //     <button onClick={addShow} className="btn btn-outline-primary" id="watchlist-screen__button-addon1" type="submit" name="button">Add</button>
-              //   </div>
-              //   <p className="watchlist-screen__errorDisplay">{addingError}</p>
-              // </form>
-  //           {user.shows.map((show,index)=>{return <WatchlistItem key={index} id={index} show={show} removeShow={removeShow}/>})}
-  //         </div>
-  //       </div>
-  //       <br />
-  //       <br />
-  //       <br />
-  //       <br />
-  //       <br />
-  //       <button className="btn btn-primary" onClick={logoutHandler}>Logout</button>
-  //     </div>
-  //   </>
-  // );
-
   return error? (
     <span className="error-message">{error}</span>
     ): (
       <>
-      <div>
+      <div className="screen">
         <PostLoginNavbar/>
         <div className="container watchlist-container">
           <div className="row">

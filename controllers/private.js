@@ -159,7 +159,6 @@ exports.addToWatchlist = async(req,res,next) =>{
                     user.shows = [...user.shows,show];
                     
                     await user.save();
-                    console.log(user);
 
                     
                     res.status(201).json({
