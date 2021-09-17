@@ -155,6 +155,7 @@ const Watchlist = ({history}) => {
         <div className="container watchlist-container">
           <div className="row">
             <div className="col-lg-8">
+             <h3>Watchlist</h3>
               {/* InputForm */}
               <div id="input-area">
                 <form className="media-input" onSubmit={e => e.preventDefault()}>

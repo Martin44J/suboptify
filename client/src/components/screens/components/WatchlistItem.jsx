@@ -25,11 +25,9 @@ const WatchlistItem=(props) => {
                     {" "+props.show.title}
                 </h5>
                 
-                <ul>
-                    {props.show.services.map((service)=>{
-                        return <li>{service.displayName}</li>
-                    })}
-                </ul>
+                {props.show.services.map((service,index)=>{
+                    return <img key={index} src={"/public/img/"+service.name+"Logo.png"} alt={service.name+"Logo"} />;
+                })}
             </div>
         );
     }
