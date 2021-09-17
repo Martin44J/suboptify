@@ -6,13 +6,13 @@ import "./WatchlistItem.css";
 const WatchlistItem=(props) => {
     if (props.show.title === "Loading watchlist") {
         return (
-            <div>
+            <div className="watchlist-loading">
                 <LoadingRing size="big"/>
             </div>
         )
     } else if (props.show.title === "Loading watchlist item"){
         return (
-            <div>
+            <div className="watchlist-loading">
                 <LoadingRing size="little"/>
             </div>
         )

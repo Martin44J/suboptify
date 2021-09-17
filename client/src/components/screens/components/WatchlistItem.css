@@ -22,3 +22,9 @@
     display: inline-block;
 }
 
+.watchlist-loading{
+    /* float: left; */
+    padding-top: 30px;
+    position:absolute;
+    display: inline-block;
+}
