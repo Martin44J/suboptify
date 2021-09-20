@@ -19,7 +19,7 @@ exports.watchlist = (req,res,next) =>{
         serviceCombinationPrice: serviceCombinationPrice});
     } catch(error) {
         next(error);
-        localStorage.clear();
+        localStorage.removeItem("authToken");
     }
 }
 
