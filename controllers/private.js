@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const ErrorResponse = require("../utils/errorResponse");
 const axios = require("axios");
-
+const {getPrice,calculatePrice,getCheapestServices} = require("../references/servicePrices");
 exports.getPrivateData = (req,res,next) =>{
     res.status(200).json({success:"true", data: "You got access to the private data on this route"});
 }
@@ -12,7 +12,10 @@ exports.watchlist = (req,res,next) =>{
         if(!user){
             return next( new ErrorResponse("User not found", 404));
         }
-        res.status(200).json({sucess: "true", user: user});
+        let serviceCombination = getCheapestServices(user.shows,user.preferences,calculatePrice);
+        let serviceCombinationPrice = calculatePrice(serviceCombination,user.preferences);
+        res.status(200).json({sucess: "true", user: user, serviceCombination: serviceCombination,
+        serviceCombinationPrice: serviceCombinationPrice});
     } catch(error) {
         next(error);
     }
@@ -26,11 +29,14 @@ exports.removeFromWatchlist = async(req,res,next) =>{
         }
         user.shows.splice(req.body.id,1);
         await user.save();
-        
+        let serviceCombination = getCheapestServices(user.shows,user.preferences,calculatePrice);
+        let serviceCombinationPrice = calculatePrice(serviceCombination,user.preferences);
         res.status(201).json({
             sucess: true,
             data: "Watchlist has been updated",
-            user: user
+            user: user,
+            serviceCombination: serviceCombination,
+            serviceCombinationPrice: serviceCombinationPrice
         });
     } catch(error) {
         next(error);
@@ -160,12 +166,22 @@ exports.addToWatchlist = async(req,res,next) =>{
                     
                     await user.save();
                     console.log(user);
-
                     
+                    //checking if prices have been set yet
+                    if (user.preferences[show.services[0].name].price === undefined) {
+                        for (const service in user.preferences) {
+                            user.preferences[service].price = getPrice(service,user.preferences[service]);
+                        }
+                    }
+                    await user.save();
+                    let serviceCombination = getCheapestServices(user.shows,user.preferences,calculatePrice);
+                    let serviceCombinationPrice = calculatePrice(serviceCombination,user.preferences);
                     res.status(201).json({
                         sucess: true,
                         data: "Watchlist has been updated",
-                        user: user
+                        user: user,
+                        serviceCombination: serviceCombination,
+                        serviceCombinationPrice: serviceCombinationPrice
                     });
                 }
             }

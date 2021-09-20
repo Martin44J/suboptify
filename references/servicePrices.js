@@ -70,3 +70,81 @@ exports.getPrice = (serviceName,userServicePreferences) => {
     }
     
 }
+
+exports.calculatePrice = (serviceArray,preferences) => {
+    let totalPrice = 0;
+    serviceArray.map((service)=> {
+        totalPrice += preferences[service.name].price;
+    });
+    return totalPrice;
+}
+
+exports.getCheapestServices = (watchlist,preferences,calculatePrice) => {
+    let serviceCombinations = [];
+    let ifAdded = false;
+    //make all possible combinations
+    if (watchlist.length>0) {
+        watchlist[0].services.forEach((service) => {
+            serviceCombinations.push([service]);
+        });
+    }
+
+    for (let i = 1; i<watchlist.length; i++) {
+      for (let u = 0; u<serviceCombinations.length; u++) {
+        ifAdded = false;
+        for (let j = 0; j<watchlist[i].services.length; j++) {
+            if (ifAdded) {
+              let newArray = [];
+              for (let p = 0; p<serviceCombinations[u].length; p++) {
+                newArray.push(serviceCombinations[u][p]);
+              }
+              newArray.splice(newArray.length-1,1,watchlist[i].services[j]);
+              serviceCombinations.unshift(newArray);
+              u++;
+            } else {
+              serviceCombinations[u].push(watchlist[i].services[j]);
+              ifAdded = true;
+            }
+        }
+      }
+    }
+  
+    //edit out duplicates
+    let finalServiceOptions = [];
+    for(let i = 0; i < serviceCombinations.length; i++){
+      let existingServices = [];
+      let existingServicesNames = [];
+      for(let j = 0; j<serviceCombinations[i].length; j++){
+        if(!(existingServicesNames.includes(serviceCombinations[i][j].name))){
+          existingServices.push(serviceCombinations[i][j]);
+          existingServicesNames.push(serviceCombinations[i][j].name);
+        }
+      }
+      finalServiceOptions.push(existingServices);
+    }
+  
+    // console.log(finalServiceOptions);
+    // console.log(finalServiceOptions.length);
+    let bestServiceCombination=[];
+    if(finalServiceOptions.length == 1){
+        bestServiceCombination = finalServiceOptions[0];
+    }else{
+        bestServiceCombination = [];
+        if(finalServiceOptions[0] != null){
+        for (let i =0; i<finalServiceOptions[0].length;i++) {
+            bestServiceCombination.push(finalServiceOptions[0][i]);
+        }
+
+        finalServiceOptions.forEach((currentOption, i) => {
+            if(calculatePrice(bestServiceCombination,preferences) > calculatePrice(currentOption,preferences)){
+                bestServiceCombination = [];
+                for (let i =0; i<currentOption.length;i++) {
+                    bestServiceCombination.push(currentOption[i]);
+                }
+            }
+        });
+      }
+    }
+    return bestServiceCombination;
+    // console.log(foundUser.bestServiceCombination);
+}

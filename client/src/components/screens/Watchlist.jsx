@@ -11,6 +11,8 @@ const Watchlist = ({history}) => {
   const [showInput,changeShow] = useState("");
   // const [data, setData] = useState("");
   const [addingError, setAddingError] = useState("");
+  const [serviceCombination, setServiceCombination] = useState([]);
+  const [serviceCombinationPrice, setServiceCombinationPrice] = useState([]);
   document.body.style.overflow = "scroll";
 
   
@@ -27,6 +29,8 @@ const Watchlist = ({history}) => {
       try {
         const { data } = await axios.get("/api/private/watchlist", config);
         setUser(data.user);
+        setServiceCombination(data.serviceCombination);
+        setServiceCombinationPrice(data.serviceCombinationPrice);
       } catch (error) {
         setError(error.response.data.error);
       }
@@ -70,6 +74,8 @@ const Watchlist = ({history}) => {
         const { data } = await axios.put("/api/private/watchlistadd", {showQuery}, config);
         // setData(data.data);
         setUser(data.user);
+        setServiceCombination(data.serviceCombination);
+        setServiceCombinationPrice(data.serviceCombinationPrice);
       } catch (error) {
         setAddingError(error.response.data.error);
         console.log("here");
@@ -108,6 +114,8 @@ const Watchlist = ({history}) => {
       const { data } = await axios.put("/api/private/watchlistremove",{id},config);
       // setData(data.data);
       setUser(data.user);
+      setServiceCombination(data.serviceCombination);
+      setServiceCombinationPrice(data.serviceCombinationPrice);
     } catch (error) {
       setError(error.response.data.error);
     }
@@ -176,7 +184,12 @@ const Watchlist = ({history}) => {
               })}
             </div>
             <div className="col-lg-4">
-            <h3>Best Pricing Plan:</h3>
+            <h3>Best Pricing Plan: ${serviceCombinationPrice}</h3>
+            <ul>
+              {serviceCombination.map((service,index) => {
+                return <li key={index}>{service.displayName}</li>
+              } )}
+            </ul>
             </div>
           </div>
         </div>

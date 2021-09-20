@@ -13,6 +13,7 @@ exports.register = async (req,res,next)=>{
             username, email, password
         });
         user.shows = [];
+        
         sendToken(user, 201, res);
     } catch (error) {
         next(error);
