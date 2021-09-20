@@ -2,6 +2,7 @@ const User = require("../models/User");
 const ErrorResponse = require("../utils/errorResponse");
 const axios = require("axios");
 const {getPrice,calculatePrice,getCheapestServices} = require("../references/servicePrices");
+
 exports.getPrivateData = (req,res,next) =>{
     res.status(200).json({success:"true", data: "You got access to the private data on this route"});
 }
@@ -18,6 +19,7 @@ exports.watchlist = (req,res,next) =>{
         serviceCombinationPrice: serviceCombinationPrice});
     } catch(error) {
         next(error);
+        localStorage.clear();
     }
 }
 
