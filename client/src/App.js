@@ -12,6 +12,7 @@ import ForgotPasswordScreen from "./components/screens/ForgotPasswordScreen";
 import ResetPasswordScreen from "./components/screens/ResetPasswordScreen";
 import Watchlist from "./components/screens/Watchlist";
 import HomeScreen from "./components/screens/HomeScreen";
+import AboutScreen from "./components/screens/AboutScreen"
 import Preferences from "./components/screens/Preferences";
 
 const App = () => {
