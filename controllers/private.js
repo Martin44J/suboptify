@@ -7,6 +7,27 @@ exports.getPrivateData = (req,res,next) =>{
     res.status(200).json({success:"true", data: "You got access to the private data on this route"});
 }
 
+exports.preferences = (req,res,next) => {
+    try {
+        const user = req.user;
+        if(!user){
+            return next( new ErrorResponse("User not found", 404));
+        }
+        let serviceCombination = getCheapestServices(user.shows,user.preferences,calculatePrice);
+        res.status(200).json({sucess: "true", preferences: user.preferences, serviceCombination: serviceCombination});
+    } catch(error) {
+        console.log(error);
+        next(error);
+    }
+}
+
+exports.preferencesChanged = async(req,res,next) => {
+    try {
+        const user = req.user;
+    } catch(error) {
+        next(error);
+    }
+}
 exports.watchlist = (req,res,next) =>{
     try {
         const user = req.user;
@@ -19,7 +40,6 @@ exports.watchlist = (req,res,next) =>{
         serviceCombinationPrice: serviceCombinationPrice});
     } catch(error) {
         next(error);
-        localStorage.removeItem("authToken");
     }
 }
 
