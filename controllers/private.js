@@ -167,7 +167,7 @@ exports.addToWatchlist = async(req,res,next) =>{
                     user.shows = [...user.shows,show];
                     
                     await user.save();
-                    console.log(user);
+                    // console.log(user);
                     
                     //checking if prices have been set yet
                     if (user.preferences[show.services[0].name].price === undefined) {

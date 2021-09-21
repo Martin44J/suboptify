@@ -31,3 +31,7 @@
     background-color: #a1d7e3;
     padding-top: 0 !important;
 }
+
+.active-link{
+  color: #1cbc9c !important;
+}

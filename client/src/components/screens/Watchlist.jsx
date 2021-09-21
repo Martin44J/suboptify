@@ -128,11 +128,10 @@ const Watchlist = ({history}) => {
     ): (
       <>
       <div className="screen">
-        <PostLoginNavbar/>
+        <PostLoginNavbar screen="watchlist"/>
         <div className="container watchlist-container">
           <div className="row">
-            <div className="col-lg-8">
-             <h3>Watchlist</h3>
+            <div className="col-lg-8 ">
               {/* InputForm */}
               <div id="input-area">
                 <form className="media-input" onSubmit={e => e.preventDefault()}>
@@ -152,7 +151,7 @@ const Watchlist = ({history}) => {
               )
               })}
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-4 second-col">
             <h3>Best Pricing Plan: ${serviceCombinationPrice}</h3>
             <ul>
               {serviceCombination.map((service,index) => {

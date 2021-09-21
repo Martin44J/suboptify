@@ -37,6 +37,17 @@ form.media-input button {
   outline: none;
 }
 
+.second-col{
+  padding-left: 20px;
+  padding-top: 20px;
+  box-shadow: 0 1px 5px rgb(138, 137, 137);
+  border-radius: 7px;
+}
+
+.watchlist-title{
+  color: black;
+}
+
 #input-area{
   position: relative;
   width: 480px;

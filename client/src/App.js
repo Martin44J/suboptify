@@ -12,6 +12,7 @@ import ForgotPasswordScreen from "./components/screens/ForgotPasswordScreen";
 import ResetPasswordScreen from "./components/screens/ResetPasswordScreen";
 import Watchlist from "./components/screens/Watchlist";
 import HomeScreen from "./components/screens/HomeScreen";
+import AboutScreen from "./components/screens/AboutScreen";
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
         {/* <PrivateRoute exact path="/" component={PrivateScreen}/> */}
         <PrivateRoute exact path="/watchlist" component={Watchlist}/>
         <Route exact path="/" component={HomeScreen}/>
+        <Route exact path="/about" component={AboutScreen}/>
         <Route exact path="/login" component={LoginScreen}/>
         <Route exact path="/register" component={RegisterScreen}/>
         <Route exact path="/forgotpassword" component={ForgotPasswordScreen}/>

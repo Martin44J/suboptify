@@ -1,0 +1,43 @@
+.about-screen__title{
+    background-color: #a1d7e3;
+    color: #fff;
+    text-align: left;
+}
+
+.about-screen__colored-section {
+    background-color: #a1d7e3;
+    color: #fff;
+}
+
+.about-screen__container-fluid{
+    padding-top: 4%;
+    padding-left: 15% !important;
+    padding-right: 15% !important;
+}
+
+.about-screen__colored-section-title{
+    padding-top: 0 !important;
+    padding-bottom: 0;
+}
+
+.about-screen__body-text{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.about-screen__image{
+    margin-top:20px;
+    width: 90%;     
+    border-radius: 5%;
+}
+
+
+.about-screen__title-text{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.feedback-text{
+    padding-top: 15px;
+    text-align:center;
+}
