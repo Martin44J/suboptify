@@ -12,7 +12,7 @@ import ForgotPasswordScreen from "./components/screens/ForgotPasswordScreen";
 import ResetPasswordScreen from "./components/screens/ResetPasswordScreen";
 import Watchlist from "./components/screens/Watchlist";
 import HomeScreen from "./components/screens/HomeScreen";
-
+import Preferences from "./components/screens/Preferences";
 
 const App = () => {
   
@@ -23,6 +23,7 @@ const App = () => {
       <Switch>
         {/* <PrivateRoute exact path="/" component={PrivateScreen}/> */}
         <PrivateRoute exact path="/watchlist" component={Watchlist}/>
+        <PrivateRoute exact path="/preferences" component={Preferences}/>
         <Route exact path="/" component={HomeScreen}/>
         <Route exact path="/login" component={LoginScreen}/>
         <Route exact path="/register" component={RegisterScreen}/>
