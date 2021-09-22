@@ -8,9 +8,6 @@ const Preferences = ({history}) => {
     const [userServices, setUserServices] = useState([]);
     const [error, setError] = useState("");
 
-    const printService = (service) => {
-        console.log(service);
-    }
     useEffect(() => {
         const fetchPrivateData = async () => {
           const config = {
@@ -40,7 +37,7 @@ const Preferences = ({history}) => {
                 <PostLoginNavbar />
                 <ul>
                     {userServices.map((service,index) => {
-                        return <li onClick={()=>{printService(service)}} key={index}>{service.price}</li>
+                        return <li onClick={()=>{printService(service)}} key={index}>{service.displayName}</li>
                     })}
                 </ul>
             </div>
