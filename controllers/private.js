@@ -14,7 +14,14 @@ exports.preferences = (req,res,next) => {
             return next( new ErrorResponse("User not found", 404));
         }
         let serviceCombination = getCheapestServices(user.shows,user.preferences,calculatePrice);
-        res.status(200).json({sucess: "true", preferences: user.preferences, serviceCombination: serviceCombination});
+        let userServices = [];
+        for (let i = 0; i<serviceCombination.length; i++) {
+            userServices.push({
+                ...user.preferences[serviceCombination[i].name],
+                displayName: serviceCombination[i].displayName
+            });
+        }
+        res.status(200).json({sucess: "true", preferences: user.preferences, userServices: userServices});
     } catch(error) {
         console.log(error);
         next(error);
