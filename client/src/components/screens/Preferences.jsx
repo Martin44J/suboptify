@@ -7,7 +7,6 @@ const Preferences = ({history}) => {
     const [preferences, setPreferences] = useState({preferences:"loading"});
     const [userServices, setUserServices] = useState([]);
     const [error, setError] = useState("");
-    const [sup,setsup] = useState("");
 
     useEffect(() => {
         const fetchPrivateData = async () => {
@@ -20,26 +19,23 @@ const Preferences = ({history}) => {
     
           try {
             const { data } = await axios.get("/api/private/preferences", config);
-            console.log(data);
-            console.log(data.preferences);
-            setsup("hello");
-            console.log(sup);
             setPreferences(data.preferences);
-            console.log(preferences);
-            let array = [];
+            let serviceCombination = [];
             for (let i = 0; i<data.serviceCombination.length; i++) {
-                array.push(data.serviceCombination[i].name);
+                serviceCombination.push(data.serviceCombination[i]);
             }
-            array.map((service)=>{
+            serviceCombination.map((service)=>{
                 setUserServices((prevValues)=> {
                     return [
                         ...prevValues,
-                        preferences[service]
+                        {   
+                            ...preferences[service.name],
+                            displayName: service.displayName
+                        }
                     ]
                 });
             });
           } catch (error) {
-            console.log(error);
             setError(error.response.data.error);
           }
         };
@@ -55,7 +51,7 @@ const Preferences = ({history}) => {
                 <PostLoginNavbar />
                 <ul>
                     {userServices.map((service,index) => {
-                        return <li key={index}>{service}</li>
+                        return <li key={index}>{service.displayName}</li>
                     })}
                 </ul>
             </div>
