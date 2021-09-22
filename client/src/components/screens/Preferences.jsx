@@ -37,7 +37,7 @@ const Preferences = ({history}) => {
                 <PostLoginNavbar />
                 <ul>
                     {userServices.map((service,index) => {
-                        return <li onClick={()=>{printService(service)}} key={index}>{service.displayName}</li>
+                        return <li key={index}>{service.displayName}</li>
                     })}
                 </ul>
             </div>
