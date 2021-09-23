@@ -28,26 +28,26 @@ const UserSchema = new mongoose.Schema({
     preferences: {
         netflix: {
             price: Number,
-            numDownloads: Number,
-            numConcurrent: Number,
-            HDRequired: Boolean,
-            ultraHDRequired: Boolean
+            numDownloads: { type: Number, default: '1' },
+            numConcurrent: { type: Number, default: '1' },
+            HDRequired: { type: Boolean, default: 'false' },
+            ultraHDRequired: { type: Boolean, default: 'false' }
         },
         hulu: {
             price: Number,
-            noAds: Boolean
+            noAds: { type: Boolean, default: 'false' }
         },
         hbomax: {
             price: Number,
-            payYearly: Boolean,
-            downloadsRequired: Boolean,
-            warnerBrosMoviePremieres: Boolean,
-            ultraHDRequired: Boolean,
-            noAds: Boolean
+            payYearly: { type: Boolean, default: 'false' },
+            downloadsRequired: { type: Boolean, default: 'false' },
+            warnerBrosMoviePremieres: { type: Boolean, default: 'false' },
+            ultraHDRequired: { type: Boolean, default: 'false' },
+            noAds: { type: Boolean, default: 'false' }
         },
         disneyplus: {
             price: Number,
-            payYearly: Boolean
+            payYearly: { type: Boolean, default: 'false' }
         }
     }
 });
