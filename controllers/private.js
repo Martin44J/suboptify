@@ -23,7 +23,7 @@ exports.preferences = (req,res,next) => {
                 defaultPrice: getDefaultPrice(serviceCombination[i].name)
             });
         }
-        res.status(200).json({sucess: "true", preferences: user.preferences, userServices: userServices});
+        res.status(200).json({sucess: "true", username: user.username, userServices: userServices});
     } catch(error) {
         console.log(error);
         next(error);

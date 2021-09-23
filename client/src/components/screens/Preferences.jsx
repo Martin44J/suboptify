@@ -7,8 +7,9 @@ import "./Preferences.css";
 const Preferences = ({history}) => {
     const [userServices, setUserServices] = useState([]);
     const [error, setError] = useState("");
+    const [username,setUserName] = useState("");
     document.body.style.overflow = "scroll";
-    
+
     useEffect(() => {
         const fetchPrivateData = async () => {
           const config = {
@@ -21,6 +22,7 @@ const Preferences = ({history}) => {
           try {
             const { data } = await axios.get("/api/private/preferences", config);
             setUserServices(data.userServices);
+            setUserName(data.username);
           } catch (error) {
             setError(error.response.data.error);
             localStorage.removeItem("authToken");
@@ -51,7 +53,7 @@ const Preferences = ({history}) => {
         ): (
         <>
             <div>
-                <PostLoginNavbar />
+                <PostLoginNavbar username={username} />
                 <ul>
                     {userServices.map((service,index) => {
                         return <ServicePreferencesCard key={index} service={service} preferencesChanged={preferencesChanged}/>
