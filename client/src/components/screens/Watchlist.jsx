@@ -33,6 +33,8 @@ const Watchlist = ({history}) => {
         setServiceCombinationPrice(data.serviceCombinationPrice);
       } catch (error) {
         setError(error.response.data.error);
+        localStorage.removeItem("authToken");
+        history.push("/login");
       }
     };
 
