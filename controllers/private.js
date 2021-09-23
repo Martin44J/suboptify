@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const ErrorResponse = require("../utils/errorResponse");
 const axios = require("axios");
-const {getPrice,calculatePrice,getCheapestServices} = require("../references/servicePrices");
+const {getDefaultPrice,getPrice,calculatePrice,getCheapestServices} = require("../references/servicePrices");
 
 exports.getPrivateData = (req,res,next) =>{
     res.status(200).json({success:"true", data: "You got access to the private data on this route"});
@@ -18,7 +18,9 @@ exports.preferences = (req,res,next) => {
         for (let i = 0; i<serviceCombination.length; i++) {
             userServices.push({
                 ...user.preferences[serviceCombination[i].name],
-                displayName: serviceCombination[i].displayName
+                displayName: serviceCombination[i].displayName,
+                name: serviceCombination[i].name,
+                defaultPrice: getDefaultPrice(serviceCombination[i].name)
             });
         }
         res.status(200).json({sucess: "true", preferences: user.preferences, userServices: userServices});
@@ -30,7 +32,27 @@ exports.preferences = (req,res,next) => {
 
 exports.preferencesChanged = async(req,res,next) => {
     try {
-        const user = req.user;
+        user = req.user;
+        if(!user){
+            return next( new ErrorResponse("User not found", 404));
+        }
+        user.preferences[req.body.service][req.body.preferenceChanged] = req.body.newValue;
+        await user.save();
+        let serviceCombination = req.body.userServices;
+        let userServices = [];
+        for (let i = 0; i<serviceCombination.length; i++) {
+            userServices.push({
+                ...user.preferences[serviceCombination[i].name],
+                displayName: serviceCombination[i].displayName,
+                name: serviceCombination[i].name,
+                defaultPrice: getDefaultPrice(serviceCombination[i].name)
+            });
+        }
+        res.status(201).json({
+            sucess: true,
+            data: "Watchlist has been updated",
+            userServices: userServices
+        });
     } catch(error) {
         next(error);
     }
