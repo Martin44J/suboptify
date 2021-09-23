@@ -33,7 +33,7 @@ const Preferences = ({history}) => {
         fetchPrivateData();
     }, []);
 
-    const preferencesChanged = async(serviceName,preferenceChanged,newValue) => {
+    const preferenceChanged = async(serviceName,preferenceChanged,newValue) => {
       try {
         const config = {
           headers: {
@@ -41,7 +41,7 @@ const Preferences = ({history}) => {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
           },
         };
-        const { data } = await axios.put("/api/private/preferencesChanged",{serviceName,preferenceChanged,newValue,userServices},config);
+        const { data } = await axios.put("/api/private/preferencesChanged",{serviceName,preferenceChanged,newValue},config);
         setUserServices(data.userServices);
       } catch (error) {
         setError(error.response.data.error);
@@ -56,7 +56,7 @@ const Preferences = ({history}) => {
                 <PostLoginNavbar screen="Preferences" username={username} />
                 <ul>
                     {userServices.map((service,index) => {
-                        return <ServicePreferencesCard key={index} service={service} preferencesChanged={preferencesChanged}/>
+                        return <ServicePreferencesCard key={index} service={service} preferenceChanged={preferenceChanged}/>
                     })}
                 </ul>
             </div>
