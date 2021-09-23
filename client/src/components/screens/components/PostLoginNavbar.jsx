@@ -18,12 +18,14 @@ const PostLoginNavbar = (props) =>{
 
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav>
-                        <Nav.Link href="/watchlist">Watchlist</Nav.Link>
-                        <Nav.Link href="/preferences">Preferences</Nav.Link>
-                        
-                        <NavDropdown title={props.username} id="basic-nav-dropdown">
-                            <NavDropdown.Item><Link onClick={()=>{logoutHandler()}} className="log-out-link" to="/">logout</Link></NavDropdown.Item>
-                        </NavDropdown>
+                            <Nav.Link href="/watchlist">Watchlist</Nav.Link>
+                            <Nav.Link href="/preferences">Preferences</Nav.Link>
+                            
+                            <Nav.Item className="username-dropdown">
+                                <NavDropdown  title={props.username} id="basic-nav-dropdown">
+                                    <NavDropdown.Item href="/" onClick={()=>{logoutHandler();}}><p>Logout</p></NavDropdown.Item>
+                                </NavDropdown>
+                            </Nav.Item>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

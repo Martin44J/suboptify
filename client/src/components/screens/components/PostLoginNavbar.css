@@ -36,6 +36,12 @@
   color: #000 !important;
 }
 
+.username-dropdown{
+  position: absolute !important;
+  right: 40px !important;
+}
+
+
 /* .active-link{
   color: #1cbc9c !important;
 }  */
