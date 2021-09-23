@@ -1,13 +1,16 @@
 import React,{useState} from "react";
-import "./ServicePreferencesCard.jsx";
+import {Accordion, Container, Row, Col} from 'react-bootstrap'
+
+import "./ServicePreferencesCard.css";
 
 const ServicePreferencesCard = (props) => {
     const [userService,changeUserPreferences] = useState(props.service);
     const checkBoxPreferences = [];
     const numberSelectPreferences = [];
-    console.log(userService.name);
+    console.log(userService);
+
     for (const preference in userService) {
-        console.log(typeof userService[preference]);
+        // console.log(typeof userService[preference]);
         if (typeof userService[preference]==='boolean') {
             checkBoxPreferences.push(preference);
         } else if (typeof userService[preference]==='number') {
@@ -16,8 +19,8 @@ const ServicePreferencesCard = (props) => {
             }
         }
     }
-    console.log(checkBoxPreferences);
-    console.log(numberSelectPreferences);
+    // console.log(checkBoxPreferences);
+    // console.log(numberSelectPreferences);
     const setNewPreference=(preference) =>{
         if (userService[preference] === false) {
             changeUserPreferences((prevValues) => {
@@ -42,83 +45,58 @@ const ServicePreferencesCard = (props) => {
         //         [preference]: newValue
         //     }
         // });
-
     }
+
+    const logoPath = "img/Logos/"+userService.name+"Logo.png";
+
     return (
-        <div className="card">
-            <h3>{userService.displayName}</h3>
-            <h4>{userService.price}</h4>
-            {checkBoxPreferences.map((preference) => {
-                return (
-                    <input
-                        type="checkbox" 
-                        id={preference} 
-                        name={preference} 
-                        value={preference} 
-                        onChange={()=>{setNewPreference(preference)}}
-                        checked={userService[preference] ? 'checked' : ''} 
-                    />
-                );
-            })}
-        </div>
+        <Accordion.Item eventKey={props.id}>
+            <Accordion.Header><img className="logo-img-header" src={logoPath}/> <p className="header-tag">{userService.displayName}</p></Accordion.Header>
+            <Accordion.Body>
+            <Container>
+                <Row>
+                    <Col sm={4}><img className="logo-img" alt={userService.displayName +" logo"} src={logoPath}/></Col>
+                    <Col sm={7}>
+                        {checkBoxPreferences.map((preference) => {
+                            return (
+                                <>
+                                    <input
+                                        type="checkbox" 
+                                        id={preference} 
+                                        name={preference} 
+                                        value={preference} 
+                                        onChange={()=>{setNewPreference(preference)}}
+                                        checked={userService[preference] ? 'checked' : ''} 
+                                    />
+                                </>
+                            );
+                        })}
+                    </Col>
+                    <Col sm={1}>
+                        {userService.price}
+                    </Col>
+                </Row>
+            </Container>
+            </Accordion.Body>
+        </Accordion.Item>
     );
-
-    // <div className="card">
-    //         <div className="card-body">
-    //             <div className="flex-container">
-    //                 <div className="flex-child selector-child">
-    //                 {/*Collapse Button */}
-    //                     <a
-    //                         id={userService.name+"buttonId"}
-    //                         data-bs-toggle="collapse"
-    //                         data-bs-target={"."+userService.name+"collapseClass"}
-    //                         aria-expanded="false"
-    //                         aria-controls={"."+userService.name+"collapseClass"}
-    //                         className="btn btn-primary"
-    //                     >
-    //                     Collapse
-    //                     </a>
-    //                 </div>
-    //                 <div className="flex-child pre-collapse-child">
-    //                     <div className={"flex-container collapse "+userService.name+"collapseClass show"}>
-    //                     {/* Pre collapse view  */}
-    //                         <div className="flex-child first-child pre-drop-down-image-child">
-    //                             <img src={"img/"+userService.name+"Logo.png"} alt="" />
-    //                         </div>
-    //                         <div className="flex-child">
-    //                             <h3>{userService.displayName}</h3>
-    //                         </div>
-    //                         <div className="flex-child last-child">
-    //                             <strong>Monthly Price: ${userService.price}</strong>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //             </div>
-
-    //             <div className={"flex-container collapse " + userService.name + "collapseClass"}>
-    //             {/* Post collapse view  */}
-    //                 <div className="flex-child first-child">
-    //                     <img src={"img/"+userService.name+"Logo.png"} alt=""/>
-    //                 </div>
-    //                 <div className="flex-child">
-
-    //                     {/* code for preferences checkboxes/number dropdowns in here */}
-
-    //                 </div>
-    //                 <div className="flex-child">
-    //                     <p>
-    //                         Base Price: ${userService.defaultPrice}
-    //                     </p>
-    //                     <p>
-    //                         Additional Price: ${userService.price - userService.defaultPrice}
-    //                     </p>
-    //                     <strong>
-    //                         Monthly Price: ${userService.price}
-    //                     </strong>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     </div>
 }
+
+
+// {/* <h3>{userService.displayName}</h3>
+//             <h4>{userService.price}</h4>
+//             {checkBoxPreferences.map((preference) => {
+//                 return (
+//                     <input
+//                         type="checkbox" 
+//                         id={preference} 
+//                         name={preference} 
+//                         value={preference} 
+//                         onChange={()=>{setNewPreference(preference)}}
+//                         checked={userService[preference] ? 'checked' : ''} 
+//                     />
+//                 );
+//             })} */}
+
 
 export default ServicePreferencesCard;

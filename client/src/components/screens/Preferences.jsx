@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import PostLoginNavbar from "./components/PostLoginNavbar.jsx";
 import ServicePreferencesCard from "./components/ServicePreferencesCard.jsx";
+import {Accordion, Container} from "react-bootstrap";
 import "./Preferences.css";
 
 const Preferences = ({history}) => {
@@ -54,11 +55,15 @@ const Preferences = ({history}) => {
         <>
             <div>
                 <PostLoginNavbar screen="Preferences" username={username} />
-                <ul>
+                
+                <Container>
+                  <Accordion>
                     {userServices.map((service,index) => {
-                        return <ServicePreferencesCard key={index} service={service} preferenceChanged={preferenceChanged}/>
+                        return <ServicePreferencesCard key={index} id={index} service={service} preferenceChanged={preferenceChanged}/>
                     })}
-                </ul>
+                  </Accordion>
+                </Container>
+                
             </div>
         </>
     );  

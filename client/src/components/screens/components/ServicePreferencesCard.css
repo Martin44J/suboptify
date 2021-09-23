@@ -1,37 +1,12 @@
-.flex-container {
-    display: flex;
+.logo-img{
+  width: 100px;
 }
 
-.flex-child {
-  text-align: left;
-  flex: 1;
-  /* border: 2px solid yellow; */
-  margin-right: 20px;
-  user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
+.logo-img-header{
+  width: 30px;
+  /* padding-right: 10px; */
 }
 
-.first-child{
-  flex: .5;
-  text-align: center;
-}
-
-.last-child{
-  text-align: right;
-}
-
-.selector-child{
-  text-align: right;
-  flex:.05;
-}
-
-.pre-collapse-child{
-  flex:2;
-}
-
-.pre-drop-down-image-child{
-  flex:.1;
+.header-tag{
+  padding: 0 15px !important;
 }
