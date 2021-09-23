@@ -21,7 +21,7 @@ const PostLoginNavbar = (props) =>{
                         <Nav.Link href="/watchlist">Watchlist</Nav.Link>
                         <Nav.Link href="/preferences">Preferences</Nav.Link>
                         
-                        <NavDropdown title={props.user.username} id="basic-nav-dropdown">
+                        <NavDropdown title={props.username} id="basic-nav-dropdown">
                             <NavDropdown.Item><Link onClick={()=>{logoutHandler()}} className="log-out-link" to="/">logout</Link></NavDropdown.Item>
                         </NavDropdown>
                         </Nav>

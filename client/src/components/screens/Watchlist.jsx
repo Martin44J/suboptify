@@ -127,7 +127,7 @@ const Watchlist = ({history}) => {
     ): (
       <>
       <div className="screen">
-        <PostLoginNavbar user={user} screen="watchlist"/>
+        <PostLoginNavbar username={user.username} screen="watchlist"/>
         <div className="container watchlist-container">
           <div className="row">
             <div className="col-lg-8 ">
