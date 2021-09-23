@@ -53,7 +53,7 @@ const Preferences = ({history}) => {
         ): (
         <>
             <div>
-                <PostLoginNavbar username={username} />
+                <PostLoginNavbar screen="Preferences" username={username} />
                 <ul>
                     {userServices.map((service,index) => {
                         return <ServicePreferencesCard key={index} service={service} preferencesChanged={preferencesChanged}/>

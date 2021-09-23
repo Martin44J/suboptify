@@ -87,8 +87,8 @@ const HomeScreen = ({history}) => {
 
 
             {/* Footer section*/}
-            <footer class="white-section" id="footer">
-                <div class="container-fluid">
+            <footer className="white-section" id="footer">
+                <div className="container-fluid">
                 <p>© Copyright 2021 Suboptify</p>
                 </div>
             </footer>
