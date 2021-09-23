@@ -13,6 +13,6 @@ router.route("/watchlistadd").put(protect, addToWatchlist);
 router.route("/watchlistremove").put(protect, removeFromWatchlist);
 
 router.route("/preferences").get(protect, preferences);
-router.route("/preferenceschanged").get(protect, preferencesChanged);
+router.route("/preferenceschanged").put(protect, preferencesChanged);
 
 module.exports = router;

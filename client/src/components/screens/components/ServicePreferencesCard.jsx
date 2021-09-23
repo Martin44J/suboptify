@@ -7,7 +7,6 @@ const ServicePreferencesCard = (props) => {
     const [userService,changeUserPreferences] = useState(props.service);
     const checkBoxPreferences = [];
     const numberSelectPreferences = [];
-    console.log(userService);
 
     for (const preference in userService) {
         // console.log(typeof userService[preference]);
@@ -21,23 +20,16 @@ const ServicePreferencesCard = (props) => {
     }
     // console.log(checkBoxPreferences);
     // console.log(numberSelectPreferences);
-    const setNewPreference=(preference) =>{
-        if (userService[preference] === false) {
-            changeUserPreferences((prevValues) => {
-                return {
-                    ...prevValues,
-                    [preference]:true
-                }
-            });
-        } else {
-            changeUserPreferences((prevValues) => {
-                return {
-                    ...prevValues,
-                    [preference]:false
-                }
-            });
-        }
-        props.preferenceChanged(userService.name,preference,userService[preference]);
+    const setNewPreference= (preference) => {
+        const newValue = !(userService[preference])
+        changeUserPreferences((prevValues) => {
+            return {
+                ...prevValues,
+                [preference]: newValue
+            }
+        });
+        props.preferenceChanged(userService.name,preference,newValue);    
+    }
         // const newValue = e.target.checked;
         // changeUserPreferences((prevValues) => {
         //     return {
@@ -45,7 +37,6 @@ const ServicePreferencesCard = (props) => {
         //         [preference]: newValue
         //     }
         // });
-    }
 
     const logoPath = "img/Logos/"+userService.name+"Logo.png";
 
@@ -60,6 +51,7 @@ const ServicePreferencesCard = (props) => {
                         {checkBoxPreferences.map((preference) => {
                             return (
                                 <>
+                                    <label for={preference}>{preference}: </label>
                                     <input
                                         type="checkbox" 
                                         id={preference} 
@@ -68,12 +60,13 @@ const ServicePreferencesCard = (props) => {
                                         onChange={()=>{setNewPreference(preference)}}
                                         checked={userService[preference] ? 'checked' : ''} 
                                     />
+                                    <br />
                                 </>
                             );
                         })}
                     </Col>
                     <Col sm={1}>
-                        {userService.price}
+                        {props.service.price}
                     </Col>
                 </Row>
             </Container>
