@@ -34,7 +34,7 @@ const Preferences = ({history}) => {
         fetchPrivateData();
     }, []);
 
-    const preferenceChanged = async(serviceName,preferenceChanged,newValue) => {
+    const preferenceChanged = async(serviceName,preference,newValue) => {
       try {
         const config = {
           headers: {
@@ -42,10 +42,11 @@ const Preferences = ({history}) => {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
           },
         };
-        const { data } = await axios.put("/api/private/preferencesChanged",{serviceName,preferenceChanged,newValue},config);
+        const { data } = await axios.put("/api/private/preferenceschanged",{serviceName,preference,newValue,userServices},config);
         setUserServices(data.userServices);
       } catch (error) {
         setError(error.response.data.error);
+        console.log(error);
       }
     }
 
