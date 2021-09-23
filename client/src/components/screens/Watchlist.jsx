@@ -39,10 +39,7 @@ const Watchlist = ({history}) => {
     fetchPrivateData();
   }, []);
 
-  const logoutHandler = () =>{
-    localStorage.removeItem("authToken");
-    history.push("/");
-  };
+  
 
   const handleChange = (event) => {
     const value = event.target.value;
@@ -128,7 +125,7 @@ const Watchlist = ({history}) => {
     ): (
       <>
       <div className="screen">
-        <PostLoginNavbar screen="watchlist"/>
+        <PostLoginNavbar user={user} screen="watchlist"/>
         <div className="container watchlist-container">
           <div className="row">
             <div className="col-lg-8 ">
