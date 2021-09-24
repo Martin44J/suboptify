@@ -8,5 +8,19 @@
 }
 
 .header-tag{
-  padding: 0 15px !important;
+  font-weight: bold;
+  color: black;
+  padding-top: 15px;
+  padding-left: 15px !important;
+}
+
+.price-tag{
+  padding-top: 15px;
+  color: black;
+  position: absolute;
+  right: 100px;
+}
+
+.checkbox-label{
+  padding-left: 5px;
 }

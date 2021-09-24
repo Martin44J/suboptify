@@ -42,7 +42,7 @@ const ServicePreferencesCard = (props) => {
 
     return (
         <Accordion.Item eventKey={props.id}>
-            <Accordion.Header><img className="logo-img-header" src={logoPath}/> <p className="header-tag">{userService.displayName}</p></Accordion.Header>
+            <Accordion.Header><img className="logo-img-header" src={logoPath}/> <p className="header-tag">{userService.displayName}</p> <p className="price-tag">${userService.price}</p></Accordion.Header>
             <Accordion.Body>
             <Container>
                 <Row>
@@ -51,7 +51,6 @@ const ServicePreferencesCard = (props) => {
                         {checkBoxPreferences.map((preference) => {
                             return (
                                 <>
-                                    <label for={preference}>{preference}: </label>
                                     <input
                                         type="checkbox" 
                                         id={preference} 
@@ -60,6 +59,8 @@ const ServicePreferencesCard = (props) => {
                                         onChange={()=>{setNewCheckBoxPreference(preference)}}
                                         checked={userService[preference] ? 'checked' : ''} 
                                     />
+                                    <label className="checkbox-label" for={preference}>{preference}</label>
+
                                     <br />
                                 </>
                             );
