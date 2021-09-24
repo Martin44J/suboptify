@@ -18,7 +18,7 @@ const PostLoginNavbar = (props) =>{
 
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav>
-                            <Nav.Link href="/watchlist">Watchlist</Nav.Link>
+                            <Nav.Link className="watchlist-link" href="/watchlist">Watchlist</Nav.Link>
                             <Nav.Link href="/preferences">Preferences</Nav.Link>
                             
                             <Nav.Item className="username-dropdown">
