@@ -13,7 +13,7 @@ const PostLoginNavbar = (props) =>{
         <div className="post-login-navbar-root">
             <Navbar expand="lg">
                 <Container>
-                    <Navbar.Brand className="brand-styling" href="/watchlist">Suboptify</Navbar.Brand>
+                    <Navbar.Brand className="brand-styling" href="/watchlist">suboptify</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar-toggle-button"/>
 
                     <Navbar.Collapse id="basic-navbar-nav">
