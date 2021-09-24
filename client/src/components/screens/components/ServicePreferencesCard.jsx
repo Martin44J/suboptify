@@ -9,7 +9,6 @@ const ServicePreferencesCard = (props) => {
     const numberSelectPreferences = [];
 
     for (const preference in userService) {
-        // console.log(typeof userService[preference]);
         if (typeof userService[preference]==='boolean') {
             checkBoxPreferences.push(preference);
         } else if (typeof userService[preference]==='number') {
@@ -18,10 +17,9 @@ const ServicePreferencesCard = (props) => {
             }
         }
     }
-    // console.log(checkBoxPreferences);
-    // console.log(numberSelectPreferences);
+
     const setNewCheckBoxPreference= (preference) => {
-        const newValue = !(userService[preference])
+        const newValue = !(userService[preference]);
         changeUserPreferences((prevValues) => {
             return {
                 ...prevValues,
@@ -30,14 +28,19 @@ const ServicePreferencesCard = (props) => {
         });
         props.preferenceChanged(userService.name,preference,newValue);    
     }
-        // const newValue = e.target.checked;
-        // changeUserPreferences((prevValues) => {
-        //     return {
-        //         ...prevValues,
-        //         [preference]: newValue
-        //     }
-        // });
 
+    const setNewNumberSelectPreference = (event) => {
+        const preference = event.target.name;
+        const newValue = parseInt(event.target.value);
+        console.log(preference);
+        changeUserPreferences((prevValues) => {
+            return {
+                ...prevValues,
+                [preference]: newValue
+            }
+        });
+        props.preferenceChanged(userService.name,preference,newValue);  
+    }
     const logoPath = "img/Logos/"+userService.name+"Logo.png";
 
     return (
@@ -61,6 +64,20 @@ const ServicePreferencesCard = (props) => {
                                     />
                                     <label className="checkbox-label" for={preference}>{preference}</label>
 
+                                    <br />
+                                </>
+                            );
+                        })}
+                        {numberSelectPreferences.map((preference) => {
+                            return (
+                                <>
+                                    <label for={preference}>{preference}: </label>
+                                    <select name={preference} id={preference} value={userService[preference]} onChange={setNewNumberSelectPreference}>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
                                     <br />
                                 </>
                             );
