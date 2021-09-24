@@ -20,7 +20,7 @@ const ServicePreferencesCard = (props) => {
     }
     // console.log(checkBoxPreferences);
     // console.log(numberSelectPreferences);
-    const setNewPreference= (preference) => {
+    const setNewCheckBoxPreference= (preference) => {
         const newValue = !(userService[preference])
         changeUserPreferences((prevValues) => {
             return {
@@ -57,7 +57,7 @@ const ServicePreferencesCard = (props) => {
                                         id={preference} 
                                         name={preference} 
                                         value={preference} 
-                                        onChange={()=>{setNewPreference(preference)}}
+                                        onChange={()=>{setNewCheckBoxPreference(preference)}}
                                         checked={userService[preference] ? 'checked' : ''} 
                                     />
                                     <br />
