@@ -31,18 +31,16 @@ exports.preferences = (req,res,next) => {
 }
 
 exports.preferencesChanged = async(req,res,next) => {
-    console.log("yo");
     try {
         user = req.user;
         if(!user){
             return next( new ErrorResponse("User not found", 404));
         }
-        console.log("hello");
-        console.log(req.body.newValue);
+        // console.log(req.body.newValue);
         user.preferences[req.body.serviceName][req.body.preference] = req.body.newValue;
         user.preferences[req.body.serviceName].price = getPrice(req.body.serviceName,user.preferences[req.body.serviceName]);
         await user.save();
-        console.log(user.preferences[req.body.serviceName][req.body.preference]);
+        // console.log(user.preferences[req.body.serviceName][req.body.preference]);
         let serviceCombination = req.body.userServices;
         let userServices = [];
         for (let i = 0; i<serviceCombination.length; i++) {

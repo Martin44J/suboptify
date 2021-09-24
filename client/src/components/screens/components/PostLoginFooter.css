@@ -1,0 +1,15 @@
+.footer,
+.push {
+  height: 50px;
+}
+
+.footer{
+    background-color: #a1d7e3 !important;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.footer-block-title{
+    font-weight: bold;
+}

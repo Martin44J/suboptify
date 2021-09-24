@@ -3,6 +3,7 @@ import axios from "axios";
 import WatchlistItem from "./components/WatchlistItem.jsx";
 import { PlusLg } from 'react-bootstrap-icons';
 import PostLoginNavbar from "./components/PostLoginNavbar.jsx";
+import PostLoginFooter from "./components/PostLoginFooter.jsx";
 import "./Watchlist.css";
 
 const Watchlist = ({history}) => {
@@ -150,17 +151,21 @@ const Watchlist = ({history}) => {
               )
               })}
             </div>
-            <div className="col-lg-4 second-col">
-            <h3>Best Pricing Plan: ${serviceCombinationPrice}</h3>
-            <ul>
-              {serviceCombination.map((service,index) => {
-                return <li key={index}>{service.displayName}</li>
-              } )}
-            </ul>
+            <div className="col-lg-4">
+              <div className="second-col">
+                <h3>Best Pricing Plan: ${serviceCombinationPrice}</h3>
+                <ul>
+                  {serviceCombination.map((service,index) => {
+                    return <li key={index}>{service.displayName}</li>
+                  } )}
+                  <br></br>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <PostLoginFooter></PostLoginFooter>s
       </>
     );
 

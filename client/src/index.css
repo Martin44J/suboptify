@@ -36,7 +36,8 @@
   }
   
   .form-group input:focus {
-    border-bottom: 3px solid coral;
+    border-bottom: 3px solid #ba9bc4;
+
   }
   
   /* .btn {
