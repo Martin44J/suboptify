@@ -45,7 +45,7 @@ const ServicePreferencesCard = (props) => {
 
     return (
         <Accordion.Item eventKey={props.id}>
-            <Accordion.Header><img className="logo-img-header" src={logoPath}/> <p className="header-tag">{userService.displayName}</p> <p className="price-tag">${userService.price}</p></Accordion.Header>
+            <Accordion.Header><img className="logo-img-header" src={logoPath}/> <p className="header-tag">{userService.displayName}</p> <p className="price-tag">${props.service.price}</p></Accordion.Header>
             <Accordion.Body>
             <Container>
                 <Row>
@@ -84,7 +84,7 @@ const ServicePreferencesCard = (props) => {
                         })}
                     </Col>
                     <Col sm={1}>
-                        {props.service.price}
+                        ${props.service.price}
                     </Col>
                 </Row>
             </Container>
