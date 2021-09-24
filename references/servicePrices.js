@@ -31,10 +31,10 @@ exports.getDefaultPrice = (serviceName) => {
 exports.getPrice = (serviceName,userServicePreferences) => {
 
     if (serviceName === "netflix") {
-        if(userServicePreferences.numPeople > 2 || userServicePreferences.ultraHDNecessary || userServicePreferences.numDownloads > 2){
+        if(userServicePreferences.numPeople > 2 || userServicePreferences.ultraHDRequired || userServicePreferences.numDownloads > 2){
         //premium
             return ultraPremiumPrices[serviceName];
-        } else if(userServicePreferences.numPeople == 2 || userServicePreferences.HDNecessary || userServicePreferences.numDownloads == 2){
+        } else if(userServicePreferences.numPeople == 2 || userServicePreferences.HDRequired || userServicePreferences.numDownloads == 2){
             return premiumPrices[serviceName];
         } else {
             return defaultPrices[serviceName];
