@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const express = require("express");
 const router = express.Router();
-const {getPrivateData, watchlist, addToWatchlist, removeFromWatchlist, preferences, preferencesChanged} = require("../controllers/private");
+const {getPrivateData, watchlist, addToWatchlist, removeFromWatchlist, preferences, preferencesChanged, getAllServices} = require("../controllers/private");
 const {protect} = require("../middleware/auth");
 
 
@@ -14,5 +14,6 @@ router.route("/watchlistremove").put(protect, removeFromWatchlist);
 
 router.route("/preferences").get(protect, preferences);
 router.route("/preferenceschanged").put(protect, preferencesChanged);
+router.route("/fetchallpreferences").put(protect, getAllServices);
 
 module.exports = router;

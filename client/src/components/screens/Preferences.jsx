@@ -9,6 +9,7 @@ const Preferences = ({history}) => {
     const [userServices, setUserServices] = useState([]);
     const [error, setError] = useState("");
     const [username,setUserName] = useState("");
+    const [allServices, setAllServices] = useState([]);
     document.body.style.overflow = "scroll";
 
     useEffect(() => {
@@ -42,14 +43,34 @@ const Preferences = ({history}) => {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
           },
         };
-        const { data } = await axios.put("/api/private/preferenceschanged",{serviceName,preference,newValue,userServices},config);
+        const { data } = await axios.put("/api/private/preferenceschanged",{serviceName,preference,newValue,userServices,allServices},config);
         setUserServices(data.userServices);
+        setAllServices(data.allServices);
       } catch (error) {
         setError(error.response.data.error);
         console.log(error);
       }
     }
 
+    const fetchAllServices = async() => {
+      if (allServices.length === 0) {
+        try {
+          const config = {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+            },
+          };
+          const { data } = await axios.put("/api/private/fetchallpreferences",{userServices},config);
+          setAllServices(data.allServices);
+        } catch (error) {
+          setError(error.response.data.error);
+          console.log(error);
+        }
+      } else {
+        setAllServices([]);
+      }
+    }
     return error? (
         <span className="error-message">{error}</span>
         ): (
@@ -64,7 +85,16 @@ const Preferences = ({history}) => {
                     })}
                   </Accordion>
                 </Container>
-                
+                <Container>
+                  <button className="btn btn-primary" onClick={fetchAllServices}>Show All Services</button>
+                </Container>
+                <Container>
+                  <Accordion>
+                    {allServices.map((service,index) => {
+                            return <ServicePreferencesCard key={index+userServices.length} id={index+userServices.length} service={service} preferenceChanged={preferenceChanged}/>
+                    })}  
+                  </Accordion>  
+                </Container>
             </div>
         </>
     );  

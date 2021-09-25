@@ -29,13 +29,13 @@ exports.getDefaultPrice = (serviceName) => {
 }
 
 exports.getPrice = (serviceName,userServicePreferences) => {
-
+    let price = 0;
     if (serviceName === "netflix") {
         if(userServicePreferences.numConcurrent > 2 || userServicePreferences.ultraHDRequired || userServicePreferences.numDownloads > 2){
         //premium
-            return ultraPremiumPrices[serviceName];
+            price = ultraPremiumPrices[serviceName];
         } else if(userServicePreferences.numConcurrent == 2 || userServicePreferences.HDRequired || userServicePreferences.numDownloads == 2){
-            return premiumPrices[serviceName];
+            price = premiumPrices[serviceName];
         } else {
             return defaultPrices[serviceName];
         }
@@ -43,32 +43,32 @@ exports.getPrice = (serviceName,userServicePreferences) => {
 
     if (serviceName==="hulu") {
         if (userServicePreferences.noAds) {
-            return premiumPrices[serviceName];
+            price = premiumPrices[serviceName];
         } else {
-            return defaultPrices[serviceName];
+            price = defaultPrices[serviceName];
         }
     }
 
     if (serviceName==="hbomax") {
         if (userServicePreferences.payYearly && (userServicePreferences.moviePremieres || userServicePreferences.downloadsRequired || userServicePreferences.ultraHDRequired || userServicePreferences.noAds)) {
-            return (yearlyPricesPremium[serviceName]/12).toFixed(2)
+            price = (yearlyPricesPremium[serviceName]/12);
         } else if (userServicePreferences.payYearly) {
-            return (yearlyPrices[serviceName]/12).toFixed(2);
+            price = (yearlyPrices[serviceName]/12);
         } else if(userServicePreferences.warnerBrosMoviePremieres || userServicePreferences.downloadsRequired || userServicePreferences.ultraHDRequired || userServicePreferences.noAds){
-            return premiumPrices[serviceName];
+            price = premiumPrices[serviceName];
         }else{
-            return defaultPrices[serviceName];
+            price = defaultPrices[serviceName];
         }
     }
 
     if (serviceName==="disneyplus") {
         if (userServicePreferences.payYearly) {
-            return (yearlyPrices[serviceName]/12).toFixed(2);
+            price = (yearlyPrices[serviceName]/12);
         } else {
-            return defaultPrices[serviceName];
+            price = defaultPrices[serviceName];
         }
     }
-    
+    return price.toFixed(2);
 }
 
 exports.calculatePrice = (serviceArray,preferences) => {

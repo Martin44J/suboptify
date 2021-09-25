@@ -31,7 +31,7 @@ const Watchlist = ({history}) => {
         const { data } = await axios.get("/api/private/watchlist", config);
         setUser(data.user);
         setServiceCombination(data.serviceCombination);
-        setServiceCombinationPrice(data.serviceCombinationPrice);
+        setServiceCombinationPrice(data.serviceCombinationPrice.toFixed(2));
       } catch (error) {
         setError(error.response.data.error);
         localStorage.removeItem("authToken");
@@ -75,7 +75,7 @@ const Watchlist = ({history}) => {
         // setData(data.data);
         setUser(data.user);
         setServiceCombination(data.serviceCombination);
-        setServiceCombinationPrice(data.serviceCombinationPrice);
+        setServiceCombinationPrice(data.serviceCombinationPrice.toFixed(2));
       } catch (error) {
         setAddingError(error.response.data.error);
         console.log("here");
@@ -115,7 +115,7 @@ const Watchlist = ({history}) => {
       // setData(data.data);
       setUser(data.user);
       setServiceCombination(data.serviceCombination);
-      setServiceCombinationPrice(data.serviceCombinationPrice);
+      setServiceCombinationPrice(data.serviceCombinationPrice.toFixed(2));
     } catch (error) {
       setError(error.response.data.error);
     }
@@ -156,7 +156,7 @@ const Watchlist = ({history}) => {
                 <h3>Best Pricing Plan: ${serviceCombinationPrice}</h3>
                 <ul>
                   {serviceCombination.map((service,index) => {
-                    return <li key={index}>{service.displayName}</li>
+                    return <li key={index}>{service.displayName}: ${user.preferences[service.name].price}</li>
                   } )}
                   <br></br>
                 </ul>
