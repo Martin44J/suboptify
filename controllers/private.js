@@ -18,7 +18,6 @@ exports.preferences = (req,res,next) => {
         for (let i = 0; i<serviceCombination.length; i++) {
             userServices.push({
                 ...user.preferences[serviceCombination[i].name],
-                displayName: serviceCombination[i].displayName,
                 name: serviceCombination[i].name,
                 defaultPrice: getDefaultPrice(serviceCombination[i].name)
             });
@@ -43,23 +42,79 @@ exports.preferencesChanged = async(req,res,next) => {
         // console.log(user.preferences[req.body.serviceName][req.body.preference]);
         let serviceCombination = req.body.userServices;
         let userServices = [];
+        let allServices = [];
         for (let i = 0; i<serviceCombination.length; i++) {
             userServices.push({
                 ...user.preferences[serviceCombination[i].name],
-                displayName: serviceCombination[i].displayName,
                 name: serviceCombination[i].name,
                 defaultPrice: getDefaultPrice(serviceCombination[i].name)
             });
         }
+        if (req.body.allServices.length>0) {
+            let serviceNames = [];
+            for (let i = 0; i<userServices.length; i++) {
+                serviceNames.push(userServices[i].name);
+            }
+            for (const service in user.preferences) {
+                if (!(serviceNames.includes(service))) {
+                    const defaultPrice = getDefaultPrice(service);
+                    if (typeof defaultPrice === "number") {
+                        allServices.push({
+                            ...user.preferences[service],
+                            name: service,
+                            defaultPrice: defaultPrice
+                        });
+                    }
+                }
+            }
+        }
         res.status(201).json({
             sucess: true,
             data: "Watchlist has been updated",
-            userServices: userServices
+            userServices: userServices,
+            allServices: allServices
         });
     } catch(error) {
         next(error);
     }
 }
+
+exports.getAllServices = async(req,res,next) => {
+    try {
+        user = req.user;
+        if(!user){
+            return next( new ErrorResponse("User not found", 404));
+        }
+        // console.log(req.body.newValue);
+        // console.log(user.preferences[req.body.serviceName][req.body.preference]);
+        let serviceNames = [];
+        let userServices = req.body.userServices;
+        for (let i = 0; i<userServices.length; i++) {
+            serviceNames.push(userServices[i].name);
+        }
+        let allServices = [];
+        for (const service in user.preferences) {
+            if (!(serviceNames.includes(service))) {
+                const defaultPrice = getDefaultPrice(service);
+                if (typeof defaultPrice === "number") {
+                    allServices.push({
+                        ...user.preferences[service],
+                        name: service,
+                        defaultPrice: defaultPrice
+                    });
+                }
+            }
+        }
+        res.status(201).json({
+            sucess: true,
+            data: "Watchlist has been updated",
+            allServices: allServices
+        });
+    } catch(error) {
+        next(error);
+    }
+}
+
 exports.watchlist = (req,res,next) =>{
     try {
         const user = req.user;
