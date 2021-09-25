@@ -91,7 +91,7 @@ const Preferences = ({history}) => {
                   </Accordion>
                 </Container>
                 <Container>
-                  <button className="btn btn-primary" onClick={fetchAllServices}>Show All Services</button>
+                  <button className="btn btn-outline-secondary" onClick={fetchAllServices}>Show All Services</button>
                 </Container>
                 <Container>
                   <Accordion>
