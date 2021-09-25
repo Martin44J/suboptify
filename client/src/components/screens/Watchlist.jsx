@@ -165,7 +165,7 @@ const Watchlist = ({history}) => {
           </div>
         </div>
       </div>
-      <PostLoginFooter></PostLoginFooter>s
+      <PostLoginFooter></PostLoginFooter>
       </>
     );
 

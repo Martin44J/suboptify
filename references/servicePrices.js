@@ -51,9 +51,9 @@ exports.getPrice = (serviceName,userServicePreferences) => {
 
     if (serviceName==="hbomax") {
         if (userServicePreferences.payYearly && (userServicePreferences.moviePremieres || userServicePreferences.downloadsRequired || userServicePreferences.ultraHDRequired || userServicePreferences.noAds)) {
-            return {yearlyPrice: yearlyPricesPremium[serviceName],type:"yearly"};
+            return (yearlyPricesPremium[serviceName]/12).toFixed(2)
         } else if (userServicePreferences.payYearly) {
-            return {yearlyPrice: yearlyPrices[serviceName],type:"yearly"};
+            return (yearlyPrices[serviceName]/12).toFixed(2);
         } else if(userServicePreferences.warnerBrosMoviePremieres || userServicePreferences.downloadsRequired || userServicePreferences.ultraHDRequired || userServicePreferences.noAds){
             return premiumPrices[serviceName];
         }else{
@@ -63,7 +63,7 @@ exports.getPrice = (serviceName,userServicePreferences) => {
 
     if (serviceName==="disneyplus") {
         if (userServicePreferences.payYearly) {
-            return {yearlyPrice: yearlyPrices[serviceName],type:"yearly"};
+            return (yearlyPrices[serviceName]/12).toFixed(2);
         } else {
             return defaultPrices[serviceName];
         }
