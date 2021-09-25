@@ -6,7 +6,7 @@ import {Accordion, Container} from "react-bootstrap";
 import "./Preferences.css";
 
 const Preferences = ({history}) => {
-    const [userServices, setUserServices] = useState([]);
+    const [userServices, setUserServices] = useState(["loading"]);
     const [error, setError] = useState("");
     const [username,setUserName] = useState("");
     const [allServices, setAllServices] = useState([]);
@@ -23,6 +23,7 @@ const Preferences = ({history}) => {
     
           try {
             const { data } = await axios.get("/api/private/preferences", config);
+            setUserServices([]);
             setUserServices(data.userServices);
             setUserName(data.username);
           } catch (error) {
@@ -53,6 +54,7 @@ const Preferences = ({history}) => {
     }
 
     const fetchAllServices = async() => {
+      setAllServices(["loading"]);
       if (allServices.length === 0) {
         try {
           const config = {
@@ -62,6 +64,7 @@ const Preferences = ({history}) => {
             },
           };
           const { data } = await axios.put("/api/private/fetchallpreferences",{userServices},config);
+          setAllServices([]);
           setAllServices(data.allServices);
         } catch (error) {
           setError(error.response.data.error);
@@ -80,6 +83,7 @@ const Preferences = ({history}) => {
                 
                 <Container>
                   <Accordion>
+
                     {userServices.map((service,index) => {
                         return <ServicePreferencesCard key={index} id={index} service={service} preferenceChanged={preferenceChanged}/>
                     })}
