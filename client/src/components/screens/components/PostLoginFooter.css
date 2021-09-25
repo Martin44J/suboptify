@@ -1,6 +1,5 @@
-.footer,
 .push {
-  height: 50px;
+  height: 500px;
 }
 
 .footer{
@@ -11,5 +10,23 @@
 }
 
 .footer-block-title{
-    font-weight: bold;
+  font-weight: bold;
+  color: #fff;
+
+}
+
+.footer-info{
+  color: #fff !important;
+  font-size: .8rem;
+  margin: 0px!important;
+}
+
+.last-item{
+  padding-bottom: 10px;
+}
+
+.link{
+  color: white!important;
+  font-size: .8rem;
+
 }
