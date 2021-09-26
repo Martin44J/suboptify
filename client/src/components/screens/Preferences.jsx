@@ -3,7 +3,7 @@ import axios from "axios";
 import PostLoginNavbar from "./components/PostLoginNavbar.jsx";
 import PostLoginFooter from "./components/PostLoginFooter.jsx";
 import ServicePreferencesCard from "./components/ServicePreferencesCard.jsx";
-import {Accordion, Container} from "react-bootstrap";
+import {Accordion, Container, Collapse} from "react-bootstrap";
 import "./Preferences.css";
 
 const Preferences = ({history}) => {
@@ -11,6 +11,7 @@ const Preferences = ({history}) => {
     const [error, setError] = useState("");
     const [username,setUserName] = useState("");
     const [allServices, setAllServices] = useState([]);
+    const [collapsedState,setCollapsedState] = useState(false);
     document.body.style.overflow = "scroll";
 
     useEffect(() => {
@@ -55,8 +56,12 @@ const Preferences = ({history}) => {
     }
 
     const fetchAllServices = async() => {
-      setAllServices(["loading"]);
+      setCollapsedState((prevValue)=> {
+        return !(prevValue);
+      });
       if (allServices.length === 0) {
+        setCollapsedState(true);
+        setAllServices(["loading"]);
         try {
           const config = {
             headers: {
@@ -65,16 +70,17 @@ const Preferences = ({history}) => {
             },
           };
           const { data } = await axios.put("/api/private/fetchallpreferences",{userServices},config);
+          setCollapsedState(false);
           setAllServices([]);
           setAllServices(data.allServices);
+          setCollapsedState(true);
         } catch (error) {
           setError(error.response.data.error);
           console.log(error);
         }
-      } else {
-        setAllServices([]);
-      }
+      } 
     }
+
     return error? (
         <span className="error-message">{error}</span>
         ): (
@@ -93,13 +99,15 @@ const Preferences = ({history}) => {
                 <Container>
                   <button className="btn btn-outline-secondary" onClick={fetchAllServices}>Show All Services</button>
                 </Container>
-                <Container>
-                  <Accordion>
-                    {allServices.map((service,index) => {
-                            return <ServicePreferencesCard key={index+userServices.length} id={index+userServices.length} service={service} preferenceChanged={preferenceChanged}/>
-                    })}  
-                  </Accordion>  
-                </Container>
+                <Collapse in={collapsedState}>
+                  <Container>
+                    <Accordion>
+                      {allServices.map((service,index) => {
+                              return <ServicePreferencesCard key={index+userServices.length} id={index+userServices.length} service={service} preferenceChanged={preferenceChanged}/>
+                      })}  
+                    </Accordion>  
+                  </Container>
+                </Collapse>
             </div>
             <PostLoginFooter></PostLoginFooter>
         </>
