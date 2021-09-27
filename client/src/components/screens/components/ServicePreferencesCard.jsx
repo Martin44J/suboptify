@@ -59,6 +59,7 @@ const ServicePreferencesCard = (props) => {
                             {checkBoxPreferences.map((preference) => {
                                 return (
                                     <>
+                                    <label className="checkbox-label" for={preference}>{userService.labels[preference]}: </label>
                                         <input
                                             type="checkbox" 
                                             id={preference} 
@@ -67,7 +68,6 @@ const ServicePreferencesCard = (props) => {
                                             onChange={()=>{setNewCheckBoxPreference(preference)}}
                                             checked={userService[preference] ? 'checked' : ''} 
                                         />
-                                        <label className="checkbox-label" for={preference}>{preference}</label>
 
                                         <br />
                                     </>
@@ -76,7 +76,7 @@ const ServicePreferencesCard = (props) => {
                             {numberSelectPreferences.map((preference) => {
                                 return (
                                     <>
-                                        <label for={preference}>{preference}: </label>
+                                        <label for={preference}>{userService.labels[preference]}: </label>
                                         <select name={preference} id={preference} value={userService[preference]} onChange={setNewNumberSelectPreference}>
                                             <option value="1">1</option>
                                             <option value="2">2</option>

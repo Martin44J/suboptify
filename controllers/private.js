@@ -2,6 +2,7 @@ const User = require("../models/User");
 const ErrorResponse = require("../utils/errorResponse");
 const axios = require("axios");
 const {getDefaultPrice,getPrice,calculatePrice,getCheapestServices} = require("../references/servicePrices");
+const {getLabel} = require("../references/preferenceLabels")
 
 exports.getPrivateData = (req,res,next) =>{
     res.status(200).json({success:"true", data: "You got access to the private data on this route"});
@@ -16,10 +17,18 @@ exports.preferences = (req,res,next) => {
         let serviceCombination = getCheapestServices(user.shows,user.preferences,calculatePrice);
         let userServices = [];
         for (let i = 0; i<serviceCombination.length; i++) {
+            let labels = {};
+            for (const preference in user.preferences[serviceCombination[i].name]) {
+                labels = {
+                    ...labels,
+                    [preference]: getLabel(preference)
+                }
+            }
             userServices.push({
                 ...user.preferences[serviceCombination[i].name],
                 name: serviceCombination[i].name,
-                defaultPrice: getDefaultPrice(serviceCombination[i].name)
+                defaultPrice: getDefaultPrice(serviceCombination[i].name),
+                labels: labels
             });
         }
         res.status(200).json({sucess: "true", username: user.username, userServices: userServices});
@@ -97,10 +106,18 @@ exports.getAllServices = async(req,res,next) => {
             if (!(serviceNames.includes(service))) {
                 const defaultPrice = getDefaultPrice(service);
                 if (typeof defaultPrice === "number") {
+                    let labels = {};
+                    for (const preference in user.preferences[service]) {
+                        labels = {
+                            ...labels,
+                            [preference]: getLabel(preference)
+                        }
+                    }
                     allServices.push({
                         ...user.preferences[service],
                         name: service,
-                        defaultPrice: defaultPrice
+                        defaultPrice: defaultPrice,
+                        labels:labels
                     });
                 }
             }
