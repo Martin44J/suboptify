@@ -10,7 +10,7 @@ const ServicePreferencesCard = (props) => {
 
     if (props.service === "loading") {
         console.log("here");
-        return <LoadingRing size="big" />
+        return <LoadingRing className="preferences-loadingRing" size="big" />
     } else {
 
         for (const preference in userService) {
