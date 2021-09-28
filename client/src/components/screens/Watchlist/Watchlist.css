@@ -1,11 +1,11 @@
-/* #watchlist-screen__watchlist-input {
+#watchlist-screen__watchlist-input {
   width: 50%;
   padding-bottom:15px;
 }
 
 #watchlist-screen__button-addon1 {
-  width: 60px;
-} */
+  text-align: center !important;
+}
 
 .watchlist-screen__errorDisplay {
   color: red;

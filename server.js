@@ -2,6 +2,7 @@ require('dotenv').config({path: "./config.env"});
 const express = require("express");
 const connectDB = require("./config/db");
 const errorHandler = require("./middleware/error");
+const path = require('path')
 
 
 //Connect to the db
@@ -17,7 +18,14 @@ app.use("/api/private", require("./routes/private"));
 //Error handler as last piece of middleware
 app.use(errorHandler);
 
-const PORT = process.env.port || 5000;
+app.use(express.static(path.join(__dirname, 'build')));
+
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+const PORT = process.env.port || 3000;
 
 const server = app.listen(PORT, () => console.log('Server running on Port ' + PORT));
 

@@ -34,7 +34,7 @@ const AboutScreen = ()=> {
                         <h6 className="feedback-text">We need help! If you would like to get involved click <a href="https://forms.gle/G4zSonT3fZzHfYHc8">here</a></h6>
                     </div>
                     <div className="col-md-6">
-                        <img className="about-screen__image" src="img/team.png" alt="picture-of-Anthony-and-Martin"/>
+                        <img className="about-screen__image" src="img/team.png" alt="Anthony-and-Martin"/>
                     </div>
                 </div>
             </div>
