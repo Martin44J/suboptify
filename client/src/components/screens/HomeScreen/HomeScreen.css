@@ -135,7 +135,7 @@ padding: 100px;
   /* Footer Section */
 
 #footer{
-  padding: 7%;
+  padding: 2%;
   text-align: center ;
 }
   
@@ -190,6 +190,10 @@ text-align: left;
 
 .title .container-fluid{
 padding-left: 15%;
+}
+
+.footer-text{
+  text-align: center;
 }
 
 /*register page and login page */
