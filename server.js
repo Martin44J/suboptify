@@ -25,9 +25,8 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-const PORT = process.env.port || 3000;
 
-const server = app.listen(PORT, () => console.log('Server running on Port ' + PORT));
+const server = app.listen(process.env.port, () => console.log('Server running on Port ' + process.env.port));
 
 process.on("unhandledRejection", (err, promise)=>{
     console.log(`Logged Error: ${err}`);
