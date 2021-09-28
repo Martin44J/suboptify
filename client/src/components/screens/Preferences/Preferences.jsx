@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import PostLoginNavbar from "./components/PostLoginNavbar.jsx";
-import PostLoginFooter from "./components/PostLoginFooter.jsx";
-import ServicePreferencesCard from "./components/ServicePreferencesCard.jsx";
+import PostLoginNavbar from "../components/PostLoginNavbar.jsx";
+import PostLoginFooter from "../components/PostLoginFooter.jsx";
+import ServicePreferencesCard from "../components/ServicePreferencesCard.jsx";
 import {Accordion, Container, Collapse} from "react-bootstrap";
 import "./Preferences.css";
 

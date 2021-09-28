@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import SuboptifyBackground from "./components/SuboptifyBackground.jsx";
+import SuboptifyBackground from "../components/SuboptifyBackground.jsx";
 import "./LoginScreen.css";
 
 const LoginScreen = ({ history }) => {

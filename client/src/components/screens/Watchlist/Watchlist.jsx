@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import WatchlistItem from "./components/WatchlistItem.jsx";
+import WatchlistItem from "../components/WatchlistItem.jsx";
 import { PlusLg } from 'react-bootstrap-icons';
-import PostLoginNavbar from "./components/PostLoginNavbar.jsx";
-import PostLoginFooter from "./components/PostLoginFooter.jsx";
+import PostLoginNavbar from "../components/PostLoginNavbar.jsx";
+import PostLoginFooter from "../components/PostLoginFooter.jsx";
 import "./Watchlist.css";
 
 const Watchlist = ({history}) => {

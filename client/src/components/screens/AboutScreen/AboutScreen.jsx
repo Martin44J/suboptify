@@ -1,5 +1,5 @@
 import React from "react";
-import PreLoginNavbar from "./components/PreLoginNavbar";
+import PreLoginNavbar from "../components/PreLoginNavbar";
 import "./AboutScreen.css";
 
 

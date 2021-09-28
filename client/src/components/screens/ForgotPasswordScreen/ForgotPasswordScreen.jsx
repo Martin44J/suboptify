@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "./ForgotPasswordScreen.css";
-import SuboptifyBackground from "./components/SuboptifyBackground.jsx";
+import SuboptifyBackground from "../components/SuboptifyBackground.jsx";
 
 
 const ForgotPasswordScreen = () => {

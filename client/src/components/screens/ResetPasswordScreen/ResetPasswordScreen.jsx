@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import SuboptifyBackground from "./components/SuboptifyBackground.jsx";
+import SuboptifyBackground from "../components/SuboptifyBackground.jsx";
 import "./ResetPasswordScreen.css";
 
 const ResetPasswordScreen = ({ history, match }) => {

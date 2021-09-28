@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./RegisterScreen.css";
-import SuboptifyBackground from "./components/SuboptifyBackground.jsx";
+import SuboptifyBackground from "../components/SuboptifyBackground.jsx";
 
 
 const RegisterScreen = ({ history }) => {

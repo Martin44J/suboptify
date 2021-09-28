@@ -6,14 +6,14 @@ import PrivateRoute from "./components/routing/PrivateRoute";
 
 //screens
 // import PrivateScreen from "./components/screens/PrivateScreen";
-import LoginScreen from "./components/screens/LoginScreen";
-import RegisterScreen from "./components/screens/RegisterScreen";
-import ForgotPasswordScreen from "./components/screens/ForgotPasswordScreen";
-import ResetPasswordScreen from "./components/screens/ResetPasswordScreen";
-import Watchlist from "./components/screens/Watchlist";
-import HomeScreen from "./components/screens/HomeScreen";
-import AboutScreen from "./components/screens/AboutScreen"
-import Preferences from "./components/screens/Preferences";
+import LoginScreen from "./components/screens/LoginScreen/LoginScreen.jsx";
+import RegisterScreen from "./components/screens/RegisterScreen/RegisterScreen.jsx";
+import ForgotPasswordScreen from "./components/screens/ForgotPasswordScreen/ForgotPasswordScreen.jsx";
+import ResetPasswordScreen from "./components/screens/ResetPasswordScreen/ResetPasswordScreen";
+import Watchlist from "./components/screens/Watchlist/Watchlist.jsx";
+import HomeScreen from "./components/screens/HomeScreen/HomeScreen.jsx";
+import AboutScreen from "./components/screens/AboutScreen/AboutScreen.jsx"
+import Preferences from "./components/screens/Preferences/Preferences.jsx";
 
 const App = () => {
 
