@@ -46,12 +46,12 @@ const HomeScreen = ({history}) => {
             <section className="home-screen__white-section" id="features">
                 <div className="home-screen__container-fluid">
                     <div className="row">
-                        <div className="home-screen__feature-box col-lg-4 home-screen__features-icon">
+                        <div className="col-lg-4 home-screen__feature-box home-screen__features-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
                                 <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
                             </svg>
                             <h3 className="home-screen__feature-title">Curate Watchlists</h3>
-                            <p>Find the cheapest way to watch a list of your favorite shows.</p>
+                            <p className="home-screen__features-explain">Find the cheapest way to watch a list of your favorite shows.</p>
                         </div>
 
                         <div className="home-screen__feature-box col-lg-4 home-screen__features-icon">
@@ -59,7 +59,7 @@ const HomeScreen = ({history}) => {
                                 <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
                             </svg>
                             <h3 className="home-screen__feature-title">Save money</h3>
-                            <p>Never over-spend on tv subscriptions again.</p>
+                            <p className="home-screen__features-explain">Never over-spend on tv subscriptions again.</p>
                         </div>
 
                         <div className="home-screen__feature-box col-lg-4 home-screen__features-icon">
@@ -67,7 +67,7 @@ const HomeScreen = ({history}) => {
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                             </svg>
                             <h3 className="home-screen__feature-title">Centralized Search</h3>
-                            <p>Find all your favorite tv shows in one centralized place.</p>
+                            <p className="home-screen__features-explain">Find all your favorite tv shows in one centralized place.</p>
                         </div>
                     </div>
                 </div>

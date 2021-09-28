@@ -88,10 +88,16 @@ position: relative;
 .home-screen__feature-title {
 color: Black;
 font-size: 1.5rem;
+text-align: center !important;
+
+}
+
+.home-screen__features-explain{
+  text-align: center;
 }
 
 .home-screen__feature-box {
-  text-align: center;
+  text-align: center !important;
   padding: 3.5%;
 }
 
