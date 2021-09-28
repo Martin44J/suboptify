@@ -50,7 +50,7 @@ const ServicePreferencesCard = (props) => {
 
         return (
             <Accordion.Item eventKey={props.id}>
-                <Accordion.Header><img className="logo-img-header" src={logoPath}/> <p className="header-tag">{userService.displayName}</p> <p className="price-tag">${props.service.price}</p></Accordion.Header>
+                <Accordion.Header><img className="logo-img-header" alt={userService.displayName +" logo"} src={logoPath}/> <p className="header-tag">{userService.displayName}</p> <p className="price-tag">${props.service.price}</p></Accordion.Header>
                 <Accordion.Body>
                 <Container>
                     <Row>
@@ -59,7 +59,7 @@ const ServicePreferencesCard = (props) => {
                             {checkBoxPreferences.map((preference) => {
                                 return (
                                     <>
-                                    <label className="checkbox-label" for={preference}>{userService.labels[preference]}: </label>
+                                    <label className="checkbox-label" for={preference}>{userService.labels[preference]+":  "}</label>
                                         <input
                                             type="checkbox" 
                                             id={preference} 
@@ -76,7 +76,7 @@ const ServicePreferencesCard = (props) => {
                             {numberSelectPreferences.map((preference) => {
                                 return (
                                     <>
-                                        <label for={preference}>{userService.labels[preference]}: </label>
+                                        <label for={preference}>{userService.labels[preference]+": "}</label>
                                         <select name={preference} id={preference} value={userService[preference]} onChange={setNewNumberSelectPreference}>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
