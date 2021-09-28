@@ -26,7 +26,7 @@ app.get('/*', (req, res) => {
 });
 
 
-const server = app.listen(process.env.port, () => console.log('Server running on Port ' + process.env.port));
+const server = app.listen(process.env.PORT, () => console.log('Server running on Port ' + process.env.PORT));
 
 process.on("unhandledRejection", (err, promise)=>{
     console.log(`Logged Error: ${err}`);
