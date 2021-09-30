@@ -23,7 +23,7 @@ const PostLoginNavbar = (props) =>{
                             
                             <Nav.Item className="username-dropdown">
                                 <NavDropdown  title={props.username} id="basic-nav-dropdown">
-                                    <NavDropdown.Item className="dropdown-item-username" href="/" onClick={()=>{logoutHandler();}}><p>Logout</p></NavDropdown.Item>
+                                    <NavDropdown.Item className="dropdown-item-username" onClick={()=>{logoutHandler();props.history.push("/")}}><p>Logout</p></NavDropdown.Item>
                                 </NavDropdown>
                             </Nav.Item>
                         </Nav>
