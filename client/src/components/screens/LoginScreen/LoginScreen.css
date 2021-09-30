@@ -34,10 +34,14 @@
   padding-left: 13%;
 }
 
-@media (max-width: 992px){
+@media (max-width: 500px){
   .login-screen__info-div{
     padding-top: 0%;
     padding-bottom: 5%;
+  }
+
+  .login-screen__form{
+    width: 80%;
   }
 
   .login-info{
