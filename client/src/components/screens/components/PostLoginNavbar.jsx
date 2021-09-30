@@ -13,13 +13,13 @@ const PostLoginNavbar = (props) =>{
         <div className="post-login-navbar-root">
             <Navbar expand="lg">
                 <Container>
-                    <Navbar.Brand className="brand-styling" href="/watchlist">suboptify</Navbar.Brand>
+                    <Navbar.Brand className="brand-styling" onClick={()=>{props.history.push("/watchlist")}}>suboptify</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar-toggle-button"/>
 
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav>
-                            <Nav.Link className="watchlist-link" href="/watchlist">Watchlist</Nav.Link>
-                            <Nav.Link href="/preferences">Preferences</Nav.Link>
+                            <Nav.Link className="watchlist-link" onClick={()=>{props.history.push("/watchlist")}}>Watchlist</Nav.Link>
+                            <Nav.Link onClick={()=>{props.history.push("/preferences")}}>Preferences</Nav.Link>
                             
                             <Nav.Item className="username-dropdown">
                                 <NavDropdown  title={props.username} id="basic-nav-dropdown">

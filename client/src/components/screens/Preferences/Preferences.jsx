@@ -86,7 +86,7 @@ const Preferences = ({history}) => {
         ): (
         <>
             <div>
-                <PostLoginNavbar screen="Preferences" username={username} />
+                <PostLoginNavbar screen="Preferences" history={history} username={username} />
                 
                 <Container>
                   <Accordion>
