@@ -49,7 +49,7 @@ const ResetPasswordScreen = ({ history, match }) => {
 
   return (
     <div className="resetpassword-screen">
-      <SuboptifyBackground/>
+      {/* <SuboptifyBackground/> */}
       <form
         onSubmit={resetPasswordHandler}
         className="resetpassword-screen__form"
@@ -62,7 +62,7 @@ const ResetPasswordScreen = ({ history, match }) => {
           </span>
         )}
         <div className="form-group">
-          <label htmlFor="password">New Password:</label>
+          {/* <label htmlFor="password">New Password:</label> */}
           <input
             type="password"
             required
@@ -74,7 +74,7 @@ const ResetPasswordScreen = ({ history, match }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="confirmpassword">Confirm New Password:</label>
+          {/* <label htmlFor="confirmpassword">Confirm New Password:</label> */}
           <input
             type="password"
             required

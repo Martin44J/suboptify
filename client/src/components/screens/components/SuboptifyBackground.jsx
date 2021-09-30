@@ -1,22 +1,17 @@
 import React from "react";
-import * as styles from "./SuboptifyBackground.module.css";
+import "./SuboptifyBackground.css";
 
 
 
 const SuboptifyBackground = () =>{
 
-    const getString = () =>{
-      let string = "";
-      for (let i =0; i < 800; i++){
-        string += " suboptify"
-      }
-      return string;
-    }
 
     document.body.style.overflow = "hidden";
 
     return(
-      <div className={styles.backgroundBox}>{getString()}</div>
+      <div id="container">
+
+      </div>
     );
 }
 

@@ -2,7 +2,9 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./RegisterScreen.css";
-import SuboptifyBackground from "../components/SuboptifyBackground.jsx";
+// import SuboptifyBackground from "../components/SuboptifyBackground.jsx";
+import { Button, Container, Row, Col } from 'react-bootstrap';
+
 
 
 const RegisterScreen = ({ history }) => {
@@ -54,64 +56,77 @@ const RegisterScreen = ({ history }) => {
 
   return (
     <div className="register-screen">
-      <SuboptifyBackground/>
-      <form onSubmit={registerHandler} className="register-screen__form">
-        <h3 className="register-screen__title">Register</h3>
-        {error && <span className="error-message">{error}</span>}
-        <div className="form-group">
-          <label htmlFor="name">Username:</label>
-          <input
-            type="text"
-            required
-            id="name"
-            placeholder="Enter username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            required
-            id="email"
-            placeholder="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            required
-            id="password"
-            autoComplete="true"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="confirmpassword">Confirm Password:</label>
-          <input
-            type="password"
-            required
-            id="confirmpassword"
-            autoComplete="true"
-            placeholder="Confirm password"
-            value={confirmpassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit" className="btn btn-outline-primary">
-          Register
-        </button>
+      <Container>
+          <Row>
+            <Col>
+              <div className="register-screen__info-div">
+                <h1 className="register-screen__register-info register-screen__title-info">suboptify</h1>
+                <p className="register-screen__register-info">Let us improve your tv expierence.</p>
+              </div>
+            </Col>  
+            <Col>
+              {/* <SuboptifyBackground/> */}
+              <div className="form-box">
+                <form onSubmit={registerHandler} className="register-screen__form">
+                  {/* <h3 className="register-screen__title">suboptify</h3> */}
+                  {error && <span className="error-message">{error}</span>}
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      required
+                      id="name"
+                      placeholder="Enter username"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="email"
+                      required
+                      id="email"
+                      placeholder="Enter email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="password"
+                      required
+                      id="password"
+                      autoComplete="true"
+                      placeholder="Enter password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="password"
+                      required
+                      id="confirmpassword"
+                      autoComplete="true"
+                      placeholder="Confirm password"
+                      value={confirmpassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
+                  </div>
+                  <div className="d-grid gap-2 login-button-box">
+                    <Button className="register-screen__submit-button" variant="primary" type="submit" size="lg">Create Account</Button>
+                  </div>
 
-        <span className="register-screen__subtext">
-          Already have an account? <Link to="/login">Login</Link>
-        </span>
-      </form>
+                  <hr></hr>
+
+                  <div className="d-grid gap-2 login-button-box">
+                    <p className="login-message">Already have an account?</p>
+                    <Button className="register-screen__login-button" variant="outline-secondary" href="/login" type="submit" size="sm">Log In</Button>
+                  </div>
+                </form>
+              </div>
+            </Col>
+          </Row>
+        </Container>
     </div>
   );
 };

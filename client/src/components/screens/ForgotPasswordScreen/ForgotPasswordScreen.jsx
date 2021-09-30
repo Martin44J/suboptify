@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "./ForgotPasswordScreen.css";
-import SuboptifyBackground from "../components/SuboptifyBackground.jsx";
+// import SuboptifyBackground from "../components/SuboptifyBackground.jsx";
 
 
 const ForgotPasswordScreen = () => {
@@ -37,7 +37,7 @@ const ForgotPasswordScreen = () => {
 
   return (
     <div className="forgotpassword-screen">
-      <SuboptifyBackground/>
+      {/* <SuboptifyBackground/> */}
       <form
         onSubmit={forgotPasswordHandler}
         className="forgotpassword-screen__form"
@@ -50,7 +50,7 @@ const ForgotPasswordScreen = () => {
             Please enter the email address you register your account with. We
             will send you reset password confirmation to this email
           </p>
-          <label htmlFor="email">Email:</label>
+          {/* <label htmlFor="email">Email:</label> */}
           <input
             type="email"
             required

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import SuboptifyBackground from "../components/SuboptifyBackground.jsx";
+// import SuboptifyBackground from "../components/SuboptifyBackground.jsx";
+import { Button, Container, Row, Col} from 'react-bootstrap';
 import "./LoginScreen.css";
 
 const LoginScreen = ({ history }) => {
@@ -46,50 +47,64 @@ const LoginScreen = ({ history }) => {
 
   return (
     <div className="login-screen">
-      <SuboptifyBackground />
-      <form onSubmit={loginHandler} className="login-screen__form">
-        <h3 className="login-screen__title">Login</h3>
-        {error && <span className="error-message">{error}</span>}
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            required
-            id="email"
-            placeholder="Email address"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            tabIndex={1}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">
-            Password:{" "}
-          </label>
-          <input
-            type="password"
-            required
-            id="password"
-            autoComplete="true"
-            placeholder="Enter password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            tabIndex={2}
-          />
-        </div>
-        <button type="submit" className="btn btn-outline-primary" tabIndex={3}>
-          Login
-        </button>
+      <Container>
+        <Row>
+          <Col>
+            <div className="login-screen__info-div">
+              <h1 className="login-info title-info">suboptify</h1>
+              <p className="login-info">Let us improve your tv expierence.</p>
+            </div>
+          </Col>  
+          <Col>
+            <div className="form-box">
+                {/* <SuboptifyBackground /> */}
+              <form onSubmit={loginHandler} className="login-screen__form">
+                {/* <h3 className="login-screen__title">suboptify</h3> */}
+                {error && <span className="error-message">{error}</span>}
+                <div className="form-group">
+                  <input
+                    type="email"
+                    required
+                    id="email"
+                    placeholder="Email address"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    tabIndex={1}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="password"
+                    required
+                    id="password"
+                    autoComplete="true"
+                    placeholder="Enter password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    tabIndex={2}
+                  />
+                </div>
+                <div className="d-grid gap-2 login-button-box">
+                  <Button tabIndex={3} className="login-screen__login-button"variant="primary" type="submit" size="lg">Log In</Button>
+                </div>
 
-        <span className="login-screen__subtext">
-          Don't have an account? <Link to="/register">Register</Link>
-          <br/>
-          <Link to="/forgotpassword" tabIndex={4} className="login-screen__forgotpassword">
-              Forgot Password?
-          </Link>
-        </span>
-        
-      </form>
+                <Link to="/forgotpassword" tabIndex={4} className="login-screen__forgotpassword">
+                    Forgot Password?
+                </Link>
+                <hr></hr>
+
+
+                <div className="d-grid gap-2 register-button-box">
+                  <Button className="login-screen__register-button" variant="outline-secondary" size="sm" href="/register">Create Account</Button>
+                </div>
+                
+                
+              </form>
+            </div>
+            
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };

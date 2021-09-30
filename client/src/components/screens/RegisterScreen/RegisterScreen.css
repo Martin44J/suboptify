@@ -1,6 +1,4 @@
-body {
-  overflow: hidden;
-}
+
 
 .register-screen {
   width: 100%;
@@ -16,17 +14,61 @@ body {
   padding: 1.5rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   background: #fff;
-  border-radius: 5px;
-  z-index: 1;
+  border-radius: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .register-screen__title {
   text-align: center;
   margin-bottom: 1rem;
+  text-emphasis: bold;
+}
+
+.login-message{
+  text-align: center;
+  font-size: .85rem;
+  margin-bottom: 0px !important;
 }
 
 .register-screen__subtext {
   font-size: 0.7rem;
   display: block;
   margin: 0.5rem 0;
+}
+
+
+.register-screen__info-div{
+  padding-top: 26%;
+  text-align: center !important;
+}
+
+.form-box{
+  padding-left: 13%;
+}
+
+@media (max-width: 992px){
+  .register-screen__info-div{
+    padding-top: 0%;
+    padding-bottom: 5%;
+  }
+
+  .register-screen__register-info{
+    font-size: 1rem;
+  }
+
+  .title-info{
+    font-size: 4rem;
+  }
+}
+
+.register-screen__register-info{
+  text-align: center!important;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.register-screen__title-info{
+  color: #fff !important;
+  font-size: 5rem !important;
+  font-weight: bold;
 }
