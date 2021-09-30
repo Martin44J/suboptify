@@ -1,16 +1,17 @@
 import React from "react";
 import "./PreLoginNavbar.css";
+import { Link } from "react-router-dom";
 
-const PreLoginNavbar = () =>{
+const PreLoginNavbar = (props) =>{
 
     return(
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark">
                 <div className="container" id="navbar-container">
                     <div className="navbar-header">
-                        <a className = "nav-link PreLoginNavbar__nav-link active" id="navbar-brand-link" href = "/">
+                        <Link to="/" className = "nav-link PreLoginNavbar__nav-link active" id="navbar-brand-link" >
                         <p className="PreLoginNavbar__navbar-brand">suboptify</p>
-                        </a>
+                        </Link>
                     </div>
 
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
@@ -20,7 +21,7 @@ const PreLoginNavbar = () =>{
                     <div className="collapse navbar-collapse navbar-right" id="navbarTogglerDemo02">
                         <ul className="nav navbar-nav navbar-right">
                         <li className="nav-item">
-                            <a className="nav-link PreLoginNavbar__nav-link active" href="/about">About us</a>
+                            <Link className="nav-link PreLoginNavbar__nav-link active" to="/about" >About us</Link>
                         </li>
                         </ul>
                     </div>
