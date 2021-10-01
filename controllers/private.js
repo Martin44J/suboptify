@@ -122,6 +122,11 @@ exports.getAllServices = async(req,res,next) => {
                 }
             }
         }
+        if (user.preferences[allServices[0].name].price === undefined) {
+            for (const service in user.preferences) {
+                user.preferences[service].price = getDefaultPrice(service,user.preferences[service]);
+            }
+        }
         res.status(201).json({
             sucess: true,
             data: "Watchlist has been updated",
