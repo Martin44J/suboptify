@@ -113,6 +113,12 @@ exports.getAllServices = async(req,res,next) => {
                             [preference]: getLabel(preference)
                         }
                     }
+                    if (user.preferences[service].price === undefined) {
+                        for (const service in user.preferences) {
+                            user.preferences[service].price = getDefaultPrice(service,user.preferences[service]);
+                        }
+                        await user.save();
+                    }
                     allServices.push({
                         ...user.preferences[service],
                         name: service,
@@ -127,6 +133,7 @@ exports.getAllServices = async(req,res,next) => {
                 user.preferences[service].price = getDefaultPrice(service,user.preferences[service]);
             }
         }
+        await user.save();
         res.status(201).json({
             sucess: true,
             data: "Watchlist has been updated",
