@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { isBoolean } = require("util");
+const {getDefaultPrice} = require("../references/servicePrices.js");
 
 //Broad coarse user schema that is used across the entire app.
 const UserSchema = new mongoose.Schema({
@@ -27,7 +28,7 @@ const UserSchema = new mongoose.Schema({
     shows: Array,
     preferences: {
         netflix: {
-            price: Number,
+            price: { type: Number, default: getDefaultPrice("netflix") },
             numDownloads: { type: Number, default: '1' },
             numConcurrent: { type: Number, default: '1' },
             HDRequired: { type: Boolean, default: 'false' },
@@ -35,12 +36,12 @@ const UserSchema = new mongoose.Schema({
             displayName: { type: String, default: 'Netflix' }
         },
         hulu: {
-            price: Number,
+            price: { type: Number, default: getDefaultPrice("hulu") },
             noAds: { type: Boolean, default: 'false' },
             displayName: { type: String, default: 'Hulu' }
         },
         hbomax: {
-            price: Number,
+            price: { type: Number, default: getDefaultPrice("hbomax") },
             payYearly: { type: Boolean, default: 'false' },
             downloadsRequired: { type: Boolean, default: 'false' },
             warnerBrosMoviePremieres: { type: Boolean, default: 'false' },
@@ -49,7 +50,7 @@ const UserSchema = new mongoose.Schema({
             displayName: { type: String, default: 'HBO Max' }
         },
         disneyplus: {
-            price: Number,
+            price: { type: Number, default: getDefaultPrice("disneyplus") },
             payYearly: { type: Boolean, default: 'false' },
             displayName: { type: String, default: 'Disney+' }
         }

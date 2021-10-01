@@ -113,12 +113,6 @@ exports.getAllServices = async(req,res,next) => {
                             [preference]: getLabel(preference)
                         }
                     }
-                    if (user.preferences[service].price === undefined) {
-                        for (const service in user.preferences) {
-                            user.preferences[service].price = getDefaultPrice(service,user.preferences[service]);
-                        }
-                        await user.save();
-                    }
                     allServices.push({
                         ...user.preferences[service],
                         name: service,
@@ -306,11 +300,6 @@ exports.addToWatchlist = async(req,res,next) =>{
                     // console.log(user);
                     
                     //checking if prices have been set yet
-                    if (user.preferences[show.services[0].name].price === undefined) {
-                        for (const service in user.preferences) {
-                            user.preferences[service].price = getPrice(service,user.preferences[service]);
-                        }
-                    }
                     await user.save();
                     let serviceCombination = getCheapestServices(user.shows,user.preferences,calculatePrice);
                     let serviceCombinationPrice = calculatePrice(serviceCombination,user.preferences);
